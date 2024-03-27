@@ -6,10 +6,10 @@ public class Product {
     
     private UUID productId;
     private String name;
-    private boolean value;
+    private double value;
     private int quantity;
 
-    public Product(String name, boolean value, int quantity) {
+    public Product(String name, double value, int quantity) {
         productId = java.util.UUID.randomUUID();
         this.name = name;
         this.value = value;
@@ -24,11 +24,11 @@ public class Product {
         return this.name;
     }
 
-    public boolean getValue() {
+    public double getValue() {
         return this.value;
     }
 
-    public void setValue(boolean value) {
+    public void setValue(double value) {
         this.value = value;
     }
 
