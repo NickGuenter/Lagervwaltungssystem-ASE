@@ -13,9 +13,10 @@ public class OrderView {
     OrderManager orderManager = new OrderManager();
 
     public void show() {
+        
+        Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            Scanner scanner = new Scanner(System.in);
             System.out.println("Bestellungen");
             System.out.println("1: Order Anlegen");
             System.out.println("2: Order Anzeigen");
@@ -53,5 +54,6 @@ public class OrderView {
                 break;
             }
         }
+        scanner.close();
     }
 }

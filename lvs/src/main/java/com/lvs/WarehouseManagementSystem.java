@@ -1,9 +1,9 @@
 package com.lvs;
 
-import com.lvs.Views.View;
+import com.lvs.Views.MainView;
 
 public class WarehouseManagementSystem {
-    static View view = new View();
+    static MainView view = new MainView();
     public static void main(String[] args) {
         view.show();
     }
