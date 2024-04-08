@@ -11,7 +11,8 @@ public class MainView {
 
     public void show() {
         Scanner scanner = new Scanner(System.in);
-        while (true) {
+        
+        while (true) { 
             System.out.println("Willkommen im LVS!");
             System.out.println("1: Bestellungen.");
             System.out.println("2: Lagerbestand.");
@@ -20,6 +21,7 @@ public class MainView {
             System.out.println("5: Programm beenden.");
 
             String eingabe = scanner.nextLine();
+            
             if (eingabe.equals("1")) {
                 orderView.show();
             } 
@@ -32,8 +34,11 @@ public class MainView {
             else if (eingabe.equals("4")) {
                 supplierView.show();
             }
-            else if (eingabe.equals("x")) {
+            else if (eingabe.equals("5")) {
                 break;
+            }
+            else {
+                System.out.println("Ungültige Eingabe!");
             }
         }
         scanner.close();

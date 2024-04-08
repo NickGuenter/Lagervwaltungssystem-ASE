@@ -33,7 +33,7 @@ public class Order {
     public double getOrderValue() {
         double result = 0;
         for (Product product : products) {
-            result += product.getValue();
+            result += product.getValue() * product.getQuantity();
         }
         return result;
     }
@@ -56,8 +56,24 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order " + orderId + ", orderValue=" + orderValue + ", supplier=" + supplier.getSupllierName() + ", products="
+        return "Order " + orderId + ", orderValue=" + orderValue + ", supplier=" + supplier.getSupllierName() + ", product list="
                 + products.size() + ", orderQuantity=" + orderQuantity + ", date=" + date;
+    }
+
+    // Method to print out the order 
+    public void printOrder() {
+        System.out.println("Order ID: " + orderId);
+        System.out.println("Order Value: " + orderValue);
+        System.out.println("Supplier: " + supplier.getSupllierName());
+        System.out.println("Products: ");
+        for (Product product : products) {
+            System.out.println("Product ID: " + product.getProductId());
+            System.out.println("Product Name: " + product.getName());
+            System.out.println("Product Value: " + product.getValue());
+            System.out.println("Product Quantity: " + product.getQuantity());
+        }
+        System.out.println("Order Quantity: " + orderQuantity);
+        System.out.println("Date: " + date);
     }
 
 }

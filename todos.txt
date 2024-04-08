@@ -1,0 +1,5 @@
+- Scanner
+Statt mehrere Scanner in den Views zu benutzen -> ein Scanner im WMS und den Views mitgeben
+
+- Order
+Auswahl ob man neues Produkt anlegt oder aus bereits Existierenden auswählt 

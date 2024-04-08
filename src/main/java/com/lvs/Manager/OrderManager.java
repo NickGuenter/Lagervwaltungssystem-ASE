@@ -12,9 +12,11 @@ public class OrderManager {
     }
 
     public void getOrders() {
+        System.out.println("Bestellverlauf:");
+        System.out.println("--------------------");
         for (Order order : orders) {
-            System.out.println(order.toString());
-            System.out.println("---------");
+            order.printOrder();
+            System.out.println("--------------------");
         }
     }
 }

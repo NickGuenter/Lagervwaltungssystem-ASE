@@ -21,6 +21,7 @@ public class OrderView {
             System.out.println("1: Order Anlegen");
             System.out.println("2: Order Anzeigen");
             System.out.println("3: Zurück");
+
             String eingabe = scanner.nextLine();
 
             if (eingabe.equals("1")) {
@@ -38,22 +39,21 @@ public class OrderView {
                 ArrayList<Product> products = new ArrayList<>();
                 products.add(product);
 
-                System.out.println();
-
                 // Testweise Supplier vorgegeben
                 Supplier supplier = new Supplier("AT Logistics", "Österreich", "Stefan Kinzl");
                 System.out.println("Supplier bereits ausgewählt.");
 
                 // Order anlegen
                 orderManager.addOrder(new Order(supplier, products));
-                // break;
             } else if (eingabe.equals("2")) {
                 orderManager.getOrders();
-                // break;
             } else if (eingabe.equals("3")) {
                 break;
             }
+            else {
+                System.out.println("Ungültige Eingabe!");
+            }
         }
-        scanner.close();
+        // scanner.close();
     }
 }
