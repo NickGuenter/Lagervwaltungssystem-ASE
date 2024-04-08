@@ -54,12 +54,6 @@ public class Order {
         return this.products;
     }
 
-    @Override
-    public String toString() {
-        return "Order " + orderId + ", orderValue=" + orderValue + ", supplier=" + supplier.getSupllierName() + ", product list="
-                + products.size() + ", orderQuantity=" + orderQuantity + ", date=" + date;
-    }
-
     // Method to print out the order 
     public void printOrder() {
         System.out.println("Order ID: " + orderId);
