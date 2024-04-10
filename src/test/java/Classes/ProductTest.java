@@ -26,33 +26,33 @@ public class ProductTest {
 
     @Test
     public void testGetName() {
-        String name = product.getName();
+        String name = product.getProductName();
         assertEquals("Test Product", name);
     }
 
     @Test
     public void testGetValue() {
-        double value = product.getValue();
+        double value = product.getProductValue();
         assertEquals(10.0, value);
     }
 
     @Test
     public void testSetValue() {
-        product.setValue(20.0);
-        double value = product.getValue();
+        product.setProductValue(20.0);
+        double value = product.getProductValue();
         assertEquals(20.0, value);
     }
 
     @Test
     public void testGetQuantity() {
-        int quantity = product.getQuantity();
+        int quantity = product.getProductQuantity();
         assertEquals(100, quantity);
     }
 
     @Test
     public void testSetQuantity() {
-        product.setQuantity(200);
-        int quantity = product.getQuantity();
+        product.setProductQuantity(200);
+        int quantity = product.getProductQuantity();
         assertEquals(200, quantity);
     }
 }

@@ -5,39 +5,39 @@ import java.util.UUID;
 public class Product {
     
     private UUID productId;
-    private String name;
-    private double value;
-    private int quantity;
+    private String productName;
+    private double productValue;
+    private int productQuantity;
 
-    public Product(String name, double value, int quantity) {
+    public Product(String productName, double productValue, int productQuantity) {
         productId = java.util.UUID.randomUUID();
-        this.name = name;
-        this.value = value;
-        this.quantity = quantity;
+        this.productName = productName;
+        this.productValue = productValue;
+        this.productQuantity = productQuantity;
     }
 
     public UUID getProductId() {
         return this.productId;
     }
 
-    public String getName() {
-        return this.name;
+    public String getProductName() {
+        return this.productName;
     }
 
-    public double getValue() {
-        return this.value;
+    public double getProductValue() {
+        return this.productValue;
     }
 
-    public void setValue(double value) {
-        this.value = value;
+    public void setProductValue(double productValue) {
+        this.productValue = productValue;
     }
 
-    public int getQuantity() {
-        return this.quantity;
+    public int getProductQuantity() {
+        return this.productQuantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setProductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
     }
 
 }

@@ -8,14 +8,14 @@ public class Order {
 
     private UUID orderId;
     private double orderValue;
-    private Supplier supplier;
     private ArrayList<Product> products;
     private int orderQuantity;
+    private Party party;
     private LocalDateTime date;
 
-    public Order(Supplier supplier, ArrayList<Product> products) {
+    public Order(Party party, ArrayList<Product> products) {
         orderId = java.util.UUID.randomUUID();
-        this.supplier = supplier;
+        this.party = party;
         this.products = products;
         orderValue = getOrderValue();
         orderQuantity = getOrderQuantity();
@@ -25,7 +25,7 @@ public class Order {
     public int getOrderQuantity() {
         int result = 0;
         for (Product product : products) {
-            result += product.getQuantity();
+            result += product.getProductQuantity();
         }
         return result;
     }
@@ -33,7 +33,7 @@ public class Order {
     public double getOrderValue() {
         double result = 0;
         for (Product product : products) {
-            result += product.getValue() * product.getQuantity();
+            result += product.getProductValue() * product.getProductQuantity();
         }
         return result;
     }
@@ -46,10 +46,6 @@ public class Order {
         return this.orderValue;
     }
 
-    public Supplier getSupplier() {
-        return this.supplier;
-    }
-
     public ArrayList<Product> getProducts() {
         return this.products;
     }
@@ -58,16 +54,25 @@ public class Order {
     public void printOrder() {
         System.out.println("Order ID: " + orderId);
         System.out.println("Order Value: " + orderValue);
-        System.out.println("Supplier: " + supplier.getSupllierName());
-        System.out.println("Products: ");
-        for (Product product : products) {
-            System.out.println("Product ID: " + product.getProductId());
-            System.out.println("Product Name: " + product.getName());
-            System.out.println("Product Value: " + product.getValue());
-            System.out.println("Product Quantity: " + product.getQuantity());
-        }
         System.out.println("Order Quantity: " + orderQuantity);
         System.out.println("Date: " + date);
+        System.out.println("" + party.getClass().getSimpleName() + ": " + party.getPartyName());
+        System.out.println("Products: ");
+        for (Product product : products) {
+            System.out.println();
+            System.out.println("Product ID: " + product.getProductId());
+            System.out.println("Product Name: " + product.getProductName());
+            System.out.println("Product Value: " + product.getProductValue());
+            System.out.println("Product Quantity: " + product.getProductQuantity());
+        } 
+    }
+
+    public Supplier getSupplier() {
+        return (Supplier)this.party;
+    }
+
+    public Customer getCustomer() {
+        return (Customer)this.party;
     }
 
 }
