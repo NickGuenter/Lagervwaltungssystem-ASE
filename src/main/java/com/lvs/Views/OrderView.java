@@ -3,7 +3,9 @@ package com.lvs.Views;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.lvs.Classes.FilialCustomer;
 import com.lvs.Classes.Order;
+import com.lvs.Classes.Party;
 import com.lvs.Classes.Product;
 import com.lvs.Classes.Supplier;
 import com.lvs.Manager.OrderManager;
@@ -33,8 +35,7 @@ public class OrderView {
                 createOrder(scanner);
             } else if (eingabe.equals("2")) {
                 orderManager.getOrders();
-            } 
-            else if (eingabe.equals("3")) {
+            } else if (eingabe.equals("3")) {
                 findOrder(scanner);
             } else if (eingabe.equals("4")) {
                 break;
@@ -42,24 +43,31 @@ public class OrderView {
                 System.out.println("Ungültige Eingabe!");
             }
         }
-        // scanner.close();
     }
 
     private void findOrder(Scanner scanner) {
-        
+
     }
 
     private void createOrder(Scanner scanner) {
-        Supplier supplier;
+        Party party = null;
         ArrayList<Product> products = new ArrayList<>();
-        // Testweise Supplier vorgegeben
-        supplier = new Supplier("AT Logistics", "Österreich", "Stefan Kinzl");
-        System.out.println("Supplier bereits ausgewählt.");
 
+        System.out.println("Kauf oder Verkauf? (k/v)");
+        String kauf = scanner.nextLine();
+
+        party = inputParty(scanner, kauf);
+        products = addProduct(scanner);
+
+        if (!products.isEmpty() && party != null) {
+            orderManager.addOrder(new Order(party, products));
+        }
+    }
+
+    public ArrayList<Product> addProduct(Scanner scanner) {
+        ArrayList<Product> products = new ArrayList<>();
         while (true) {
-            // Produkt anlegen
             System.out.println("Neues Produkt hinzufügen? (j/n)");
-
             String eingabe = scanner.nextLine();
 
             if (eingabe.equals("n")) {
@@ -78,9 +86,23 @@ public class OrderView {
                 System.out.println("Ungültige Eingabe!");
             }
         }
+        return products;
+    }
 
-        if (!products.isEmpty() && supplier != null) {
-            orderManager.addOrder(new Order(supplier, products));
+    public Party inputParty(Scanner scanner, String kauf) {
+        Party party = null;
+
+        if (kauf.equals("k")) {
+            party = new Supplier("AT Logistics", "Österreich", "Stefan Kinzl");
+            System.out.println("Supplier bereits ausgewählt.");
+        } else if (kauf.equals("v")) {
+            party = new FilialCustomer("F01", "Wien");
+            System.out.println("Filialkunde bereits ausgewählt.");
+        } else {
+            System.out.println("Ungültige Eingabe!");
+            party = inputParty(scanner, kauf);
         }
+
+        return party;
     }
 }

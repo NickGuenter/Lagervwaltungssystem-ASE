@@ -23,7 +23,6 @@ public class OrderTest {
     @BeforeEach
     public void setUp() {
         supplier = new Supplier("AT Logistics", "Österreich", "Stefan Kinzl");
-        customer = new Customer("Max Mustermann");
         products = new ArrayList<>();
         products.add(new Product("Product 1", 10.0, 100));
         products.add(new Product("Product 2", 20.0, 200));

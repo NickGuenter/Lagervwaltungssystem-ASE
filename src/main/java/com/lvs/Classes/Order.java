@@ -56,7 +56,7 @@ public class Order {
         System.out.println("Order Value: " + orderValue);
         System.out.println("Order Quantity: " + orderQuantity);
         System.out.println("Date: " + date);
-        System.out.println("" + party.getClass().getSimpleName() + ": " + party.getPartyName());
+        System.out.println("" + party.getClass().getSimpleName() + ": " + party.getName());
         System.out.println("Products: ");
         for (Product product : products) {
             System.out.println();
@@ -73,6 +73,10 @@ public class Order {
 
     public Customer getCustomer() {
         return (Customer)this.party;
+    }
+
+    public Party getParty() {
+        return this.party;
     }
 
 }

@@ -28,17 +28,9 @@ public class OrderManager {
         }
     }
 
-    public void findOrderBySupplier(String supplierName) {
+    public void findOrderByParty(String customerName) {
         for (Order order : orders) {
-            if (order.getSupplier().getSupplierName().equals(supplierName)) {
-                order.printOrder();
-            }
-        }
-    }
-
-    public void findOrderByCustomer(String customerName) {
-        for (Order order : orders) {
-            if (order.getCustomer().getCustomerName().equals(customerName)) {
+            if (order.getParty().getName().equals(customerName)) {
                 order.printOrder();
             }
         }

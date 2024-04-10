@@ -7,14 +7,14 @@ public class Supplier extends Party{
     private UUID supplierId;
     private String supllierName;
     private String location;
-    private String contact;
+    private String contactPerson;
     
-    public Supplier(String supllierName, String location, String contact) {
-        super(supllierName); // Add this line to invoke the superclass constructor
+    public Supplier(String supllierName, String location, String contactPerson) {
+        super(supllierName, location); 
         supplierId = java.util.UUID.randomUUID();
         this.supllierName = supllierName;
         this.location = location;
-        this.contact = contact;
+        this.contactPerson = contactPerson;
     }
 
     public UUID getSupplierId() {
@@ -29,8 +29,8 @@ public class Supplier extends Party{
         return location;
     }
 
-    public String getContact() {
-        return contact;
+    public String getContactPerson() {
+        return contactPerson;
     }
 
 }
