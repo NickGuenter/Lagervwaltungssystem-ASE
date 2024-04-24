@@ -3,6 +3,7 @@ package com.lvs.Views;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.lvs.Inventory;
 import com.lvs.Classes.FilialCustomer;
 import com.lvs.Classes.Order;
 import com.lvs.Classes.Party;
@@ -12,14 +13,17 @@ import com.lvs.Manager.OrderManager;
 
 public class OrderView {
 
-    OrderManager orderManager;
+    OrderManager buyOrders;
+    OrderManager sellOrders;
+    Inventory inventory;
 
-    public OrderView() {
-        this.orderManager = new OrderManager();
+    public OrderView(OrderManager buyOrders, OrderManager sellOrders, Inventory inventory) {
+        this.buyOrders = buyOrders;
+        this.sellOrders = sellOrders;
+        this.inventory = inventory;
     }
 
     public void show() {
-
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -34,7 +38,10 @@ public class OrderView {
             if (eingabe.equals("1")) {
                 createOrder(scanner);
             } else if (eingabe.equals("2")) {
-                orderManager.getOrders();
+                System.out.println("Kaufbestellungen:");
+                buyOrders.getOrders();
+                System.out.println("Verkaufbestellungen:");
+                sellOrders.getOrders();
             } else if (eingabe.equals("3")) {
                 findOrder(scanner);
             } else if (eingabe.equals("4")) {
@@ -59,9 +66,23 @@ public class OrderView {
         party = inputParty(scanner, kauf);
         products = addProduct(scanner);
 
-        if (!products.isEmpty() && party != null) {
-            orderManager.addOrder(new Order(party, products));
+        if (products.isEmpty() || party == null) {
+            System.out.println("Bestellung konnte nicht angelegt werden.");
+            return;
         }
+
+        if (kauf.equals("v")) {
+            if (inventory.checkStock(products)) {
+                sellOrders.addOrder(new Order(party, products));
+                inventory.removeProducts(products);
+            } else {
+                System.out.println("Bestellung konnte nicht angelegt werden.");
+            }
+        } else if (kauf.equals("k")) {
+            buyOrders.addOrder(new Order(party, products));
+            inventory.addProducts(products);
+        }
+
     }
 
     public ArrayList<Product> addProduct(Scanner scanner) {

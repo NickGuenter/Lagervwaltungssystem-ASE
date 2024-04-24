@@ -7,6 +7,7 @@ import com.lvs.Classes.Customer;
 import com.lvs.Classes.Order;
 import com.lvs.Classes.Product;
 import com.lvs.Classes.Supplier;
+import com.lvs.Classes.Party;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -16,17 +17,16 @@ import java.util.UUID;
 public class OrderTest {
 
     private Order order;
-    private Supplier supplier;
-    private Customer customer;
+    private Party party;
     private ArrayList<Product> products;
 
     @BeforeEach
     public void setUp() {
-        supplier = new Supplier("AT Logistics", "Österreich", "Stefan Kinzl");
+        party = new Supplier("AT Logistics", "Österreich", "Stefan Kinzl");
         products = new ArrayList<>();
         products.add(new Product("Product 1", 10.0, 100));
         products.add(new Product("Product 2", 20.0, 200));
-        order = new Order(supplier, products);
+        order = new Order(party, products);
     }
 
     @Test
@@ -42,9 +42,9 @@ public class OrderTest {
     }
 
     @Test
-    public void testGetSupplier() {
-        Supplier orderSupplier = order.getSupplier();
-        assertEquals(supplier, orderSupplier);
+    public void testGetparty() {
+        Party orderparty = order.getParty();
+        assertEquals(party, orderparty);
     }
 
     @Test

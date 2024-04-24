@@ -4,15 +4,23 @@ import java.util.Scanner;
 
 public class MainView {
 
-    OrderView orderView = new OrderView();
-    InventoryView inventoryView = new InventoryView();
-    ReportView reportView = new ReportView();
-    SupplierView supplierView = new SupplierView();
+    InventoryView inventoryView;
+    ReportView reportView;
+    SupplierView supplierView;
+    OrderView orderView;
+
+    public MainView(OrderView orderView, InventoryView inventoryView, ReportView reportView,
+            SupplierView supplierView) {
+        this.orderView = orderView;
+        this.inventoryView = inventoryView;
+        this.reportView = reportView;
+        this.supplierView = supplierView;
+    }
 
     public void show() {
         Scanner scanner = new Scanner(System.in);
-        
-        while (true) { 
+
+        while (true) {
             System.out.println("Willkommen im LVS!");
             System.out.println("1: Bestellungen.");
             System.out.println("2: Lagerbestand.");
@@ -21,23 +29,18 @@ public class MainView {
             System.out.println("5: Programm beenden.");
 
             String eingabe = scanner.nextLine();
-            
+
             if (eingabe.equals("1")) {
                 orderView.show();
-            } 
-            else if (eingabe.equals("2")) {
+            } else if (eingabe.equals("2")) {
                 inventoryView.show();
-            } 
-            else if (eingabe.equals("3")) {
+            } else if (eingabe.equals("3")) {
                 reportView.show();
-            } 
-            else if (eingabe.equals("4")) {
+            } else if (eingabe.equals("4")) {
                 supplierView.show();
-            }
-            else if (eingabe.equals("5")) {
+            } else if (eingabe.equals("5")) {
                 break;
-            }
-            else {
+            } else {
                 System.out.println("Ungültige Eingabe!");
             }
         }
