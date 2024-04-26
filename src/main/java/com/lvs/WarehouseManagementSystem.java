@@ -1,10 +1,5 @@
 package com.lvs;
 
-import java.util.ArrayList;
-
-import com.lvs.Classes.FilialCustomer;
-import com.lvs.Classes.Order;
-import com.lvs.Classes.Party;
 import com.lvs.Classes.Product;
 import com.lvs.Manager.OrderManager;
 import com.lvs.Views.InventoryView;
@@ -27,16 +22,6 @@ public class WarehouseManagementSystem {
 
         inventory.addProduct(new Product("Bier", 2, 100));
         inventory.addProduct(new Product("Wein", 5, 50));
-
-        // TEST
-        // Party party = new FilialCustomer("F01", "München");
-        // Product product = new Product("Bier", 2, 50);
-        // ArrayList<Product> products = new ArrayList<>();
-        // products.add(product);
-        // inventory.addProduct(product);
-        // Order order = new Order(party, products);
-        // sellOrders.addOrder(order);
-        // TEST
 
         mainView.show();
     }

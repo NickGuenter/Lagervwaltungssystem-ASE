@@ -2,7 +2,6 @@ package com.lvs.Manager;
 
 import java.util.ArrayList;
 
-import com.lvs.Inventory;
 import com.lvs.Classes.Order;
 
 public class OrderManager {

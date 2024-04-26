@@ -13,12 +13,26 @@ public class Inventory {
 
     public void addProducts(ArrayList<Product> products) {
         for (Product product : products) {
-            addProduct(product);
+            Product p = getProduct(product);
+            if (p == null) {
+                addProduct(product);
+            }
+            else {
+                p.setProductQuantity(p.getProductQuantity() + product.getProductQuantity());
+            }
         }
     }
 
     public void removeProduct(Product product) {
-        getProduct(product).setProductQuantity(getProduct(product).getProductQuantity() - product.getProductQuantity());
+        Product p = getProduct(product);
+        int diff = p.getProductQuantity() - product.getProductQuantity();
+
+        if (diff == 0) {
+            products.remove(p);
+        }
+        else {
+            p.setProductQuantity(diff);
+        }
     }
 
     public void removeProducts(ArrayList<Product> products) {

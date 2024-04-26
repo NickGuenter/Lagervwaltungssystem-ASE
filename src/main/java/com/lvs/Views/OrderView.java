@@ -53,7 +53,7 @@ public class OrderView {
     }
 
     private void findOrder(Scanner scanner) {
-
+        // TODO
     }
 
     private void createOrder(Scanner scanner) {
@@ -64,10 +64,14 @@ public class OrderView {
         String kauf = scanner.nextLine();
 
         party = inputParty(scanner, kauf);
-        products = addProduct(scanner);
+        if (party == null) {
+            System.out.println("Ungültige Eingabe!");
+            return;
+        }
 
-        if (products.isEmpty() || party == null) {
-            System.out.println("Bestellung konnte nicht angelegt werden.");
+        products = addProduct(scanner);
+        if (products.isEmpty()) {
+            System.out.println("Es muss mindestens ein Produkt hinzugefügt werden!");
             return;
         }
 
@@ -88,7 +92,7 @@ public class OrderView {
     public ArrayList<Product> addProduct(Scanner scanner) {
         ArrayList<Product> products = new ArrayList<>();
         while (true) {
-            System.out.println("Neues Produkt hinzufügen? (j/n)");
+            System.out.println("Produkt hinzufügen? (j/n)");
             String eingabe = scanner.nextLine();
 
             if (eingabe.equals("n")) {
@@ -119,11 +123,7 @@ public class OrderView {
         } else if (kauf.equals("v")) {
             party = new FilialCustomer("F01", "Wien");
             System.out.println("Filialkunde bereits ausgewählt.");
-        } else {
-            System.out.println("Ungültige Eingabe!");
-            party = inputParty(scanner, kauf);
-        }
-
+        } 
         return party;
     }
 }
