@@ -21,4 +21,11 @@ public class BusinessCustomer extends Customer{
         this.contactPerson = contactPerson;
     }
 
+    @Override
+    public void print() {
+        System.out.println("Unternehmen: " + name);
+        System.out.println("Adresse: " + address);
+        System.out.println("Ansprechpartner: " + contactPerson);
+    }
+
 }

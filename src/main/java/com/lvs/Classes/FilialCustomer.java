@@ -4,12 +4,12 @@ public class FilialCustomer extends Customer{
 
     private String contactPerson;
 
-    public FilialCustomer(String filialName, String location) {
-        super(filialName, location);
+    public FilialCustomer(String filialNr, String location) {
+        super(filialNr, location);
     }
 
-    public FilialCustomer(String filialName, String location, String contactPerson) {
-        super(filialName, location);
+    public FilialCustomer(String filialNr, String location, String contactPerson) {
+        super(filialNr, location);
         this.contactPerson = contactPerson;
     }
 
@@ -19,6 +19,13 @@ public class FilialCustomer extends Customer{
 
     public void setContactPerson(String contactPerson) {
         this.contactPerson = contactPerson;
+    }
+
+    @Override
+    public void print() {
+        System.out.println("Filial Nummer: " + name);
+        System.out.println("Adresse: " + address);
+        System.out.println("Ansprechpartner: " + contactPerson);
     }
 
 }

@@ -2,7 +2,10 @@ package com.lvs.Manager;
 
 import java.util.ArrayList;
 
+import com.lvs.Classes.BusinessCustomer;
 import com.lvs.Classes.Customer;
+import com.lvs.Classes.FilialCustomer;
+import com.lvs.Classes.PrivateCustomer;
 
 public class CustomerManager {
 
@@ -10,16 +13,13 @@ public class CustomerManager {
 
     public CustomerManager() {
         customers = new ArrayList<Customer>();
-    }
-
-    public void addCustomer(String name, String address, String filial) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addCustomer'");
+        customers.add(new FilialCustomer("F01", "Hamburg", "William Doe"));
     }
 
     public void getCustomers() {
         System.out.println("Kunden:");
         System.out.println("-------------");
+        System.out.println();
         for (Customer customer : customers) {
             customer.print();
             System.out.println();
@@ -44,19 +44,19 @@ public class CustomerManager {
         return null;
     }
 
-    public void addFilialCustomer(String name, String address, String filial) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addFilialCustomer'");
+    public void addFilialCustomer(String name, String address, String filialNr) {
+        FilialCustomer customer = new FilialCustomer(name, address, filialNr);
+        customers.add(customer);
     }
 
     public void addBusinessCustomer(String name, String address, String contact) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addBusinessCustomer'");
+        BusinessCustomer customer = new BusinessCustomer(name, address, contact);
+        customers.add(customer);
     }
 
     public void addPrivateCustomer(String name, String address) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addPrivateCustomer'");
+        PrivateCustomer customer = new PrivateCustomer(name, address);
+        customers.add(customer);
     }
 
 }

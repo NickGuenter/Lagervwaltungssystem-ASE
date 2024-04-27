@@ -7,8 +7,8 @@ public class Customer extends Party{
     }
 
     public void print() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'print'");
+        System.out.println("Name: " + name);
+        System.out.println("Adresse: " + address);
     }
 
 }

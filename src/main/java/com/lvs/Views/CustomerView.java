@@ -66,19 +66,19 @@ public class CustomerView implements View {
 
     private void addFilialCustomer() {
         System.out.println("Filialkunde anlegen");
-        System.out.println("Name:");
-        String name = System.console().readLine();
+        System.out.println("Filial Nummer:");
+        String filialNr = System.console().readLine();
         System.out.println("Adresse:");
         String address = System.console().readLine();
-        System.out.println("Filiale:");
-        String filial = System.console().readLine();
+        System.out.println("Kontaktperson:");
+        String contact = System.console().readLine();
 
-        customerManager.addFilialCustomer(name, address, filial);
+        customerManager.addFilialCustomer(filialNr, address, contact);
     }
 
     private void addBusinessCustomer() {
         System.out.println("Geschäftskunde anlegen");
-        System.out.println("Name:");
+        System.out.println("Unternehmen:");
         String name = System.console().readLine();
         System.out.println("Adresse:");
         String address = System.console().readLine();

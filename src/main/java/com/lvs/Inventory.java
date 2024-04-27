@@ -7,6 +7,11 @@ import com.lvs.Classes.Product;
 public class Inventory {
     ArrayList<Product> products = new ArrayList<>();
 
+    public Inventory() {
+        addProduct(new Product("Bier", 2, 100));
+        addProduct(new Product("Wein", 5, 50));
+    }
+
     public void addProduct(Product product) {
         products.add(product);
     }

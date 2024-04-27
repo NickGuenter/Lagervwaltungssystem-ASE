@@ -1,8 +1,8 @@
 package com.lvs.Classes;
 
 public abstract class Party {
-    private String name;
-    private String address;
+    protected String name;
+    protected String address;
 
     public Party(String name, String address) {
         this.name = name;
