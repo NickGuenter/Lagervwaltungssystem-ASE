@@ -22,6 +22,7 @@ public class OrderManager {
             order.printOrder();
             System.out.println("--------------------");
         }
+        System.out.println();
     }
 
     public void findOrderById(String orderId) {

@@ -75,11 +75,12 @@ public class Inventory {
     public void getProducts() {
         System.out.println("Inventar:");
         System.out.println("--------------------");
+        System.out.println();
         for (Product product : products) {
-            System.out.println("Name: " + product.getProductName()
-                    + ", Wert: " + product.getProductValue()
-                    + ", Anzahl: " + product.getProductQuantity());
-            System.out.println("--------------------");
+            product.print();
+            System.out.println();
         }
+        System.out.println("--------------------");
+        System.out.println();
     }
 }

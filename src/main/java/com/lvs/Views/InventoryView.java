@@ -2,7 +2,7 @@ package com.lvs.Views;
 
 import com.lvs.Inventory;
 
-public class InventoryView {
+public class InventoryView implements View {
     Inventory inventory;
 
     public InventoryView(Inventory inventory) {

@@ -4,14 +4,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.lvs.Inventory;
+import com.lvs.Classes.BusinessCustomer;
 import com.lvs.Classes.FilialCustomer;
 import com.lvs.Classes.Order;
 import com.lvs.Classes.Party;
+import com.lvs.Classes.PrivateCustomer;
 import com.lvs.Classes.Product;
 import com.lvs.Classes.Supplier;
 import com.lvs.Manager.OrderManager;
 
-public class OrderView {
+public class OrderView implements View{
 
     OrderManager buyOrders;
     OrderManager sellOrders;
@@ -36,14 +38,14 @@ public class OrderView {
             String eingabe = scanner.nextLine();
 
             if (eingabe.equals("1")) {
-                createOrder(scanner);
+                createOrderInput(scanner);
             } else if (eingabe.equals("2")) {
                 System.out.println("Kaufbestellungen:");
                 buyOrders.getOrders();
                 System.out.println("Verkaufbestellungen:");
                 sellOrders.getOrders();
             } else if (eingabe.equals("3")) {
-                findOrder(scanner);
+                findOrderInput(scanner);
             } else if (eingabe.equals("4")) {
                 break;
             } else {
@@ -52,11 +54,11 @@ public class OrderView {
         }
     }
 
-    private void findOrder(Scanner scanner) {
+    private void findOrderInput(Scanner scanner) {
         // TODO
     }
 
-    private void createOrder(Scanner scanner) {
+    private void createOrderInput(Scanner scanner) {
         Party party = null;
         ArrayList<Product> products = new ArrayList<>();
 
@@ -69,7 +71,7 @@ public class OrderView {
             return;
         }
 
-        products = addProduct(scanner);
+        products = addProductInput(scanner);
         if (products.isEmpty()) {
             System.out.println("Es muss mindestens ein Produkt hinzugefügt werden!");
             return;
@@ -89,7 +91,7 @@ public class OrderView {
 
     }
 
-    public ArrayList<Product> addProduct(Scanner scanner) {
+    public ArrayList<Product> addProductInput(Scanner scanner) {
         ArrayList<Product> products = new ArrayList<>();
         while (true) {
             System.out.println("Produkt hinzufügen? (j/n)");
@@ -118,12 +120,55 @@ public class OrderView {
         Party party = null;
 
         if (kauf.equals("k")) {
-            party = new Supplier("AT Logistics", "Österreich", "Stefan Kinzl");
-            System.out.println("Supplier bereits ausgewählt.");
+            party = chooseSupplier(scanner);
         } else if (kauf.equals("v")) {
-            party = new FilialCustomer("F01", "Wien");
+            party = chooseCustomer(scanner);
             System.out.println("Filialkunde bereits ausgewählt.");
         } 
+        return party;
+    }
+
+    public Party chooseCustomer(Scanner scanner) {
+        System.out.println("Kundenart auswählen:");
+        System.out.println("1: Filialkunde");
+        System.out.println("2: Geschäftskunde");
+        System.out.println("3: Privatkunde");
+
+        String eingabe = scanner.nextLine();
+        Party party = null;
+
+        if (eingabe.equals("1")) {
+            party = new FilialCustomer("F01", "Wien", "Sascha Huber");
+            return party;
+        } else if (eingabe.equals("2")) {
+            party = new BusinessCustomer("B01", "Wien", "Lukas Schuster");
+            return party;
+        } else if (eingabe.equals("3")) {
+            party = new PrivateCustomer("Max Mustermann", "77970 Marbach am Neckar");
+            return party;
+        } else {
+            System.out.println("Ungültige Eingabe!");
+        }
+        return party;
+    }
+
+    public Party chooseSupplier(Scanner scanner) {
+        System.out.println("Lieferant auswählen:");
+        System.out.println("1: AT Logistics");
+        System.out.println("2: DE Logistics");
+
+        String eingabe = scanner.nextLine();
+        Party party = null;
+
+        if (eingabe.equals("1")) {
+            party = new Supplier("AT Logistics", "Österreich", "Stefan Kinzl");
+            return party;
+        } else if (eingabe.equals("2")) {
+            party = new Supplier("DE Logistics", "Deutschland", "Hans Müller");
+            return party;
+        } else {
+            System.out.println("Ungültige Eingabe!");
+        }
         return party;
     }
 }

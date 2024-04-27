@@ -40,4 +40,10 @@ public class Product {
         this.productQuantity = productQuantity;
     }
 
+    public void print() {
+        System.out.println("Produkt: " + productName);
+        System.out.println("Preis: " + productValue);
+        System.out.println("Menge: " + productQuantity);
+    }
+
 }

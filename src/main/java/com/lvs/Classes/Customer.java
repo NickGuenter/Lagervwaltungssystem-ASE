@@ -6,4 +6,9 @@ public class Customer extends Party{
         super(name, address);
     }
 
+    public void print() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'print'");
+    }
+
 }

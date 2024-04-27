@@ -33,4 +33,10 @@ public class Supplier extends Party{
         return contactPerson;
     }
 
+    public void print() {
+        System.out.println("Lieferant: " + supllierName);
+        System.out.println("Adresse: " + location);
+        System.out.println("Kontaktperson: " + contactPerson);
+    }
+
 }
