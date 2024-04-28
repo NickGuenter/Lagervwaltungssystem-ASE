@@ -4,26 +4,37 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.lvs.Inventory;
-import com.lvs.Classes.BusinessCustomer;
-import com.lvs.Classes.FilialCustomer;
 import com.lvs.Classes.Order;
 import com.lvs.Classes.Party;
 import com.lvs.Classes.PrivateCustomer;
 import com.lvs.Classes.Product;
 import com.lvs.Classes.Supplier;
+import com.lvs.Manager.CustomerManager;
 import com.lvs.Manager.OrderManager;
+import com.lvs.Manager.SupplierManager;
 
 public class OrderView implements View{
 
     OrderManager buyOrders;
     OrderManager sellOrders;
     Inventory inventory;
+    CustomerManager customerManager;
+    SupplierManager supplierManager;
 
-    public OrderView(OrderManager buyOrders, OrderManager sellOrders, Inventory inventory) {
+    public OrderView(OrderManager buyOrders, OrderManager sellOrders, Inventory inventory, CustomerManager customerManager, SupplierManager supplierManager) {
         this.buyOrders = buyOrders;
         this.sellOrders = sellOrders;
         this.inventory = inventory;
+        this.customerManager = customerManager;
+        this.supplierManager = supplierManager;
+
+        ArrayList<Product> products = new ArrayList<>();
+        products.add(new Product("Wasser", 2, 20));
+        buyOrders.addOrder(new Order(new Supplier("ChinaSup", "Hamburg", "Bern Tuni"), products));
+        sellOrders.addOrder(new Order(new PrivateCustomer("Hans Hensl", "Hamburg"), products));
     }
+
+    private static final String INVALID_INPUT = "Ungültige Eingabe!";
 
     public void show() {
         Scanner scanner = new Scanner(System.in);
@@ -38,27 +49,57 @@ public class OrderView implements View{
             String eingabe = scanner.nextLine();
 
             if (eingabe.equals("1")) {
-                createOrderInput(scanner);
+                createOrder(scanner);
             } else if (eingabe.equals("2")) {
                 System.out.println("Kaufbestellungen:");
                 buyOrders.getOrders();
                 System.out.println("Verkaufbestellungen:");
                 sellOrders.getOrders();
             } else if (eingabe.equals("3")) {
-                findOrderInput(scanner);
+                findOrder(scanner);
             } else if (eingabe.equals("4")) {
                 break;
             } else {
-                System.out.println("Ungültige Eingabe!");
+                System.out.println(INVALID_INPUT);
             }
         }
     }
 
-    private void findOrderInput(Scanner scanner) {
-        // TODO
+    private void findOrder(Scanner scanner) {
+        System.out.println("Bestellung suchen nach:");
+        System.out.println("1: Kunden oder Lieferanten");
+        System.out.println("2: Produkt");
+        System.out.println("3: Zurück");
+
+        String eingabe = scanner.nextLine();
+
+        switch (eingabe) {
+            case "1":
+                System.out.println("Kunden- oder Lieferantennamen eingeben:");
+                String partyName = scanner.nextLine();
+                System.out.println("Bestellsuche nach " + partyName + ":");
+                System.out.println("--------------------");
+                buyOrders.getOrdersByParty(partyName);
+                sellOrders.getOrdersByParty(partyName);
+                break;
+            case "2":
+                System.out.println("Produktname eingeben:");
+                String productName = scanner.nextLine();
+                System.out.println("Bestellsuche nach " + productName + ":");
+                System.out.println("--------------------");
+                buyOrders.getOrdersByProduct(productName);
+                sellOrders.getOrdersByProduct(productName);
+                break;
+            case "3":
+                break;
+            default:
+                System.out.println(INVALID_INPUT);
+                break;
+        }
+        System.out.println();
     }
 
-    private void createOrderInput(Scanner scanner) {
+    private void createOrder(Scanner scanner) {
         Party party = null;
         ArrayList<Product> products = new ArrayList<>();
 
@@ -67,11 +108,11 @@ public class OrderView implements View{
 
         party = inputParty(scanner, kauf);
         if (party == null) {
-            System.out.println("Ungültige Eingabe!");
+            System.out.println(INVALID_INPUT);
             return;
         }
 
-        products = addProductInput(scanner);
+        products = addProduct(scanner);
         if (products.isEmpty()) {
             System.out.println("Es muss mindestens ein Produkt hinzugefügt werden!");
             return;
@@ -91,7 +132,7 @@ public class OrderView implements View{
 
     }
 
-    public ArrayList<Product> addProductInput(Scanner scanner) {
+    public ArrayList<Product> addProduct(Scanner scanner) {
         ArrayList<Product> products = new ArrayList<>();
         while (true) {
             System.out.println("Produkt hinzufügen? (j/n)");
@@ -110,12 +151,13 @@ public class OrderView implements View{
                 Product product = new Product(productName, productValue, productQuantity);
                 products.add(product);
             } else {
-                System.out.println("Ungültige Eingabe!");
+                System.out.println(INVALID_INPUT);
             }
         }
         return products;
     }
 
+    // TODO: Refactor this method
     public Party inputParty(Scanner scanner, String kauf) {
         Party party = null;
 
@@ -123,51 +165,36 @@ public class OrderView implements View{
             party = chooseSupplier(scanner);
         } else if (kauf.equals("v")) {
             party = chooseCustomer(scanner);
-            System.out.println("Filialkunde bereits ausgewählt.");
         } 
         return party;
     }
 
     public Party chooseCustomer(Scanner scanner) {
-        System.out.println("Kundenart auswählen:");
-        System.out.println("1: Filialkunde");
-        System.out.println("2: Geschäftskunde");
-        System.out.println("3: Privatkunde");
+        customerManager.getCustomers();
+        System.out.println("Kundenname, Filial Nummer oder Unternehmen eingeben:");
 
         String eingabe = scanner.nextLine();
-        Party party = null;
+        Party party = customerManager.findCustomer(eingabe);
 
-        if (eingabe.equals("1")) {
-            party = new FilialCustomer("F01", "Wien", "Sascha Huber");
-            return party;
-        } else if (eingabe.equals("2")) {
-            party = new BusinessCustomer("B01", "Wien", "Lukas Schuster");
-            return party;
-        } else if (eingabe.equals("3")) {
-            party = new PrivateCustomer("Max Mustermann", "77970 Marbach am Neckar");
+        if (party != null) {
             return party;
         } else {
-            System.out.println("Ungültige Eingabe!");
+            System.out.println(INVALID_INPUT + " oder Kunde nicht gefunden!");
         }
         return party;
     }
 
     public Party chooseSupplier(Scanner scanner) {
-        System.out.println("Lieferant auswählen:");
-        System.out.println("1: AT Logistics");
-        System.out.println("2: DE Logistics");
+        supplierManager.getSuppliers();
+        System.out.println("Lieferanten Name eingeben:");
 
         String eingabe = scanner.nextLine();
-        Party party = null;
+        Party party = supplierManager.findSupplier(eingabe);
 
-        if (eingabe.equals("1")) {
-            party = new Supplier("AT Logistics", "Österreich", "Stefan Kinzl");
-            return party;
-        } else if (eingabe.equals("2")) {
-            party = new Supplier("DE Logistics", "Deutschland", "Hans Müller");
+        if (party != null) {
             return party;
         } else {
-            System.out.println("Ungültige Eingabe!");
+            System.out.println(INVALID_INPUT + " oder Lieferant nicht gefunden!");
         }
         return party;
     }

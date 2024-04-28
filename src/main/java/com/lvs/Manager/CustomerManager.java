@@ -35,7 +35,7 @@ public class CustomerManager {
         }
     }
 
-    private Customer findCustomer(String name) {
+    public Customer findCustomer(String name) {
         for (Customer customer : customers) {
             if (customer.getName().equals(name)) {
                 return customer;

@@ -25,6 +25,7 @@ public class OrderManager {
         System.out.println();
     }
 
+    // TODO: Is this method relevant?
     public void findOrderById(String orderId) {
         for (Order order : orders) {
             if (order.getOrderId().toString().equals(orderId)) {
@@ -33,21 +34,24 @@ public class OrderManager {
         }
     }
 
-    public void findOrderByParty(String name) {
-        for (Order order : orders) {
-            if (order.getParty().getName().equals(name)) {
-                order.printOrder();
-            }
-        }
-    }
-
-    public void findOrderByProduct(String productName) {
+    public void getOrdersByProduct(String productName) {
         for (Order order : orders) {
             order.getProducts().forEach(product -> {
                 if (product.getProductName().equals(productName)) {
                     order.printOrder();
+                    System.out.println("--------------------");
                 }
             });
         }
     }
+
+    public void getOrdersByParty(String partyName) {
+        for (Order order : orders) {
+            if (order.getParty().getName().equals(partyName)) {
+                order.printOrder();
+                System.out.println("--------------------");
+            }
+        }
+    }
+
 }
