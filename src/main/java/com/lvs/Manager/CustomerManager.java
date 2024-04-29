@@ -16,7 +16,11 @@ public class CustomerManager {
         customers.add(new FilialCustomer("F01", "Hamburg", "William Doe"));
     }
 
-    public void getCustomers() {
+    public ArrayList<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void printCustomers() {
         System.out.println("Kunden:");
         System.out.println("-------------");
         System.out.println();
@@ -44,8 +48,8 @@ public class CustomerManager {
         return null;
     }
 
-    public void addFilialCustomer(String name, String address, String filialNr) {
-        FilialCustomer customer = new FilialCustomer(name, address, filialNr);
+    public void addFilialCustomer(String filialNr, String address, String contact) {
+        FilialCustomer customer = new FilialCustomer(filialNr, address, contact);
         customers.add(customer);
     }
 

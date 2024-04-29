@@ -27,5 +27,4 @@ public class FilialCustomer extends Customer{
         System.out.println("Adresse: " + address);
         System.out.println("Ansprechpartner: " + contactPerson);
     }
-
 }

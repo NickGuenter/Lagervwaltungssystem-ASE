@@ -20,6 +20,7 @@ public class OrderView implements View{
     Inventory inventory;
     CustomerManager customerManager;
     SupplierManager supplierManager;
+    Scanner scanner;
 
     public OrderView(OrderManager buyOrders, OrderManager sellOrders, Inventory inventory, CustomerManager customerManager, SupplierManager supplierManager) {
         this.buyOrders = buyOrders;
@@ -27,6 +28,7 @@ public class OrderView implements View{
         this.inventory = inventory;
         this.customerManager = customerManager;
         this.supplierManager = supplierManager;
+        this.scanner = new Scanner(System.in);
 
         ArrayList<Product> products = new ArrayList<>();
         products.add(new Product("Wasser", 2, 20));
@@ -37,8 +39,6 @@ public class OrderView implements View{
     private static final String INVALID_INPUT = "Ungültige Eingabe!";
 
     public void show() {
-        Scanner scanner = new Scanner(System.in);
-
         while (true) {
             System.out.println("Bestellungen");
             System.out.println("1: Bestellung Anlegen");
@@ -49,14 +49,14 @@ public class OrderView implements View{
             String eingabe = scanner.nextLine();
 
             if (eingabe.equals("1")) {
-                createOrder(scanner);
+                createOrder();
             } else if (eingabe.equals("2")) {
                 System.out.println("Kaufbestellungen:");
                 buyOrders.getOrders();
                 System.out.println("Verkaufbestellungen:");
                 sellOrders.getOrders();
             } else if (eingabe.equals("3")) {
-                findOrder(scanner);
+                findOrder();
             } else if (eingabe.equals("4")) {
                 break;
             } else {
@@ -65,7 +65,7 @@ public class OrderView implements View{
         }
     }
 
-    private void findOrder(Scanner scanner) {
+    private void findOrder() {
         System.out.println("Bestellung suchen nach:");
         System.out.println("1: Kunden oder Lieferanten");
         System.out.println("2: Produkt");
@@ -99,20 +99,20 @@ public class OrderView implements View{
         System.out.println();
     }
 
-    private void createOrder(Scanner scanner) {
+    private void createOrder() {
         Party party = null;
         ArrayList<Product> products = new ArrayList<>();
 
         System.out.println("Kauf oder Verkauf? (k/v)");
         String kauf = scanner.nextLine();
 
-        party = inputParty(scanner, kauf);
+        party = inputParty(kauf);
         if (party == null) {
             System.out.println(INVALID_INPUT);
             return;
         }
 
-        products = addProduct(scanner);
+        products = addProduct();
         if (products.isEmpty()) {
             System.out.println("Es muss mindestens ein Produkt hinzugefügt werden!");
             return;
@@ -132,45 +132,64 @@ public class OrderView implements View{
 
     }
 
-    public ArrayList<Product> addProduct(Scanner scanner) {
+    public ArrayList<Product> addProduct() {
         ArrayList<Product> products = new ArrayList<>();
         while (true) {
             System.out.println("Produkt hinzufügen? (j/n)");
             String eingabe = scanner.nextLine();
-
-            if (eingabe.equals("n")) {
-                break;
-            } else if (eingabe.equals("j")) {
-                System.out.println("Produktname eingeben:");
-                String productName = scanner.nextLine();
-                System.out.println("Produktwert eingeben:");
-                double productValue = Double.valueOf(scanner.nextLine());
-                System.out.println("Produktmenge eingeben:");
-                int productQuantity = Integer.valueOf(scanner.nextLine());
-
-                Product product = new Product(productName, productValue, productQuantity);
-                products.add(product);
-            } else {
-                System.out.println(INVALID_INPUT);
+    
+            switch (eingabe) {
+                case "n":
+                    return products;
+                case "j":
+                    Product product = createProduct();
+                    if (product != null) {
+                        products.add(product);
+                    }
+                    break;
+                default:
+                    System.out.println(INVALID_INPUT);
             }
         }
-        return products;
+    }
+    
+    public Product createProduct() {
+        System.out.println("Produktname eingeben:");
+        String productName = scanner.nextLine();
+        System.out.println("Produktwert eingeben:");
+        double productValue;
+        try {
+            productValue = Double.valueOf(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println(INVALID_INPUT);
+            return null;
+        }
+        System.out.println("Produktmenge eingeben:");
+        int productQuantity;
+        try {
+            productQuantity = Integer.valueOf(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println(INVALID_INPUT);
+            return null;
+        }
+    
+        return new Product(productName, productValue, productQuantity);
     }
 
     // TODO: Refactor this method
-    public Party inputParty(Scanner scanner, String kauf) {
+    public Party inputParty(String kauf) {
         Party party = null;
 
         if (kauf.equals("k")) {
-            party = chooseSupplier(scanner);
+            party = chooseSupplier();
         } else if (kauf.equals("v")) {
-            party = chooseCustomer(scanner);
+            party = chooseCustomer();
         } 
         return party;
     }
 
-    public Party chooseCustomer(Scanner scanner) {
-        customerManager.getCustomers();
+    public Party chooseCustomer() {
+        customerManager.printCustomers();
         System.out.println("Kundenname, Filial Nummer oder Unternehmen eingeben:");
 
         String eingabe = scanner.nextLine();
@@ -184,7 +203,7 @@ public class OrderView implements View{
         return party;
     }
 
-    public Party chooseSupplier(Scanner scanner) {
+    public Party chooseSupplier() {
         supplierManager.getSuppliers();
         System.out.println("Lieferanten Name eingeben:");
 

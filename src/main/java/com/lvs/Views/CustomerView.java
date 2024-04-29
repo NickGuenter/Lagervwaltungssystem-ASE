@@ -26,7 +26,7 @@ public class CustomerView implements View {
             if (eingabe.equals("1")) {
                 addCustomer(eingabe);
             } else if (eingabe.equals("2")) {
-                customerManager.getCustomers();
+                customerManager.printCustomers();
             } else if (eingabe.equals("3")) {
                 removeCustomer();
             } else if (eingabe.equals("4")) {
