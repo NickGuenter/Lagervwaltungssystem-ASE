@@ -14,7 +14,7 @@ import com.lvs.Manager.CustomerManager;
 import com.lvs.Manager.OrderManager;
 import com.lvs.Manager.SupplierManager;
 
-public class OrderView implements View{
+public class OrderView implements View {
 
     OrderManager buyOrders;
     OrderManager sellOrders;
@@ -23,7 +23,8 @@ public class OrderView implements View{
     SupplierManager supplierManager;
     Scanner scanner;
 
-    public OrderView(OrderManager buyOrders, OrderManager sellOrders, Inventory inventory, CustomerManager customerManager, SupplierManager supplierManager) {
+    public OrderView(OrderManager buyOrders, OrderManager sellOrders, Inventory inventory,
+            CustomerManager customerManager, SupplierManager supplierManager) {
         this.buyOrders = buyOrders;
         this.sellOrders = sellOrders;
         this.inventory = inventory;
@@ -76,20 +77,10 @@ public class OrderView implements View{
 
         switch (eingabe) {
             case "1":
-                System.out.println("Kunden- oder Lieferantennamen eingeben:");
-                String partyName = scanner.nextLine();
-                System.out.println("Bestellsuche nach " + partyName + ":");
-                System.out.println("--------------------");
-                buyOrders.getOrdersByParty(partyName);
-                sellOrders.getOrdersByParty(partyName);
+                searchForParty();
                 break;
             case "2":
-                System.out.println("Produktname eingeben:");
-                String productName = scanner.nextLine();
-                System.out.println("Bestellsuche nach " + productName + ":");
-                System.out.println("--------------------");
-                buyOrders.getOrdersByProduct(productName);
-                sellOrders.getOrdersByProduct(productName);
+                searchForProduct();
                 break;
             case "3":
                 break;
@@ -98,6 +89,24 @@ public class OrderView implements View{
                 break;
         }
         System.out.println();
+    }
+
+    public void searchForParty() {
+        System.out.println("Kunden- oder Lieferantennamen eingeben:");
+        String partyName = scanner.nextLine();
+        System.out.println("Bestellsuche nach " + partyName + ":");
+        System.out.println("--------------------");
+        buyOrders.getOrdersByParty(partyName);
+        sellOrders.getOrdersByParty(partyName);
+    }
+
+    public void searchForProduct() {
+        System.out.println("Produktname eingeben:");
+        String productName = scanner.nextLine();
+        System.out.println("Bestellsuche nach " + productName + ":");
+        System.out.println("--------------------");
+        buyOrders.getOrdersByProduct(productName);
+        sellOrders.getOrdersByProduct(productName);
     }
 
     private void createOrder() {
@@ -137,7 +146,7 @@ public class OrderView implements View{
         while (true) {
             System.out.println("Produkt hinzufügen? (j/n)");
             String eingabe = scanner.nextLine();
-    
+
             switch (eingabe) {
                 case "n":
                     return products;
@@ -152,7 +161,7 @@ public class OrderView implements View{
             }
         }
     }
-    
+
     public Product createProduct() {
         System.out.println("Produktname eingeben:");
         String productName = scanner.nextLine();
@@ -172,7 +181,7 @@ public class OrderView implements View{
             System.out.println(INVALID_INPUT);
             return null;
         }
-    
+
         return new Product(productName, productValue, productQuantity);
     }
 
@@ -184,7 +193,7 @@ public class OrderView implements View{
             party = chooseSupplier();
         } else if (kauf.equals("v")) {
             party = chooseCustomer();
-        } 
+        }
         return party;
     }
 
