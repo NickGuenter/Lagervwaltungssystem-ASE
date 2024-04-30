@@ -2,9 +2,9 @@ package com.lvs.Classes;
 
 public abstract class Party {
     protected String name;
-    protected String address;
+    protected Address address;
 
-    public Party(String name, String address) {
+    public Party(String name, Address address) {
         this.name = name;
         this.address = address;
     }
@@ -14,14 +14,14 @@ public abstract class Party {
     }
 
     public String getAddress() {
-        return address;
+        return address.getCity();
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 }

@@ -3,6 +3,7 @@ package Classes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.lvs.Classes.Address;
 import com.lvs.Classes.Customer;
 import com.lvs.Classes.Order;
 import com.lvs.Classes.Product;
@@ -22,7 +23,7 @@ public class OrderTest {
 
     @BeforeEach
     public void setUp() {
-        party = new Supplier("AT Logistics", "Österreich", "Stefan Kinzl");
+        party = new Supplier("AT Logistics", new Address("Österreich"), "Stefan Kinzl");
         products = new ArrayList<>();
         products.add(new Product("Product 1", 10.0, 100));
         products.add(new Product("Product 2", 20.0, 200));

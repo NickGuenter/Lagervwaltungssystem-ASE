@@ -1,5 +1,6 @@
 package com.lvs.Views;
 
+import com.lvs.Classes.Address;
 import com.lvs.Manager.SupplierManager;
 
 public class SupplierView implements View {
@@ -30,7 +31,7 @@ public class SupplierView implements View {
                 System.out.println("Kontakt:");
                 String contact = System.console().readLine();
 
-                supplierManager.addSupplier(name, address, contact);
+                supplierManager.addSupplier(name, new Address(address), contact);
             } else if (eingabe.equals("2")) {
                 supplierManager.getSuppliers();
             } else if (eingabe.equals("3")) {

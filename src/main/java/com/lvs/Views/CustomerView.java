@@ -1,5 +1,6 @@
 package com.lvs.Views;
 
+import com.lvs.Classes.Address;
 import com.lvs.Manager.CustomerManager;
 
 public class CustomerView implements View {
@@ -73,7 +74,7 @@ public class CustomerView implements View {
         System.out.println("Kontaktperson:");
         String contact = System.console().readLine();
 
-        customerManager.addCustomer("Filial", filialNr, address, java.util.Optional.of(contact));
+        customerManager.addCustomer("Filial", filialNr, new Address(address), java.util.Optional.of(contact));
     }
 
     private void addBusinessCustomer() {
@@ -85,7 +86,7 @@ public class CustomerView implements View {
         System.out.println("Ansprechpartner:");
         String contact = System.console().readLine();
 
-        customerManager.addCustomer("Business", name, address, java.util.Optional.of(contact));
+        customerManager.addCustomer("Business", name, new Address(address), java.util.Optional.of(contact));
     }
 
     private void addPrivateCustomer() {
@@ -95,6 +96,6 @@ public class CustomerView implements View {
         System.out.println("Adresse:");
         String address = System.console().readLine();
 
-        customerManager.addCustomer("Private", name, address, java.util.Optional.empty());
+        customerManager.addCustomer("Private", name, new Address(address), java.util.Optional.empty());
     }
 }

@@ -2,6 +2,7 @@ package com.lvs.Manager;
 
 import java.util.ArrayList;
 
+import com.lvs.Classes.Address;
 import com.lvs.Classes.Supplier;
 
 public class SupplierManager {
@@ -10,16 +11,16 @@ public class SupplierManager {
     
     public SupplierManager() {
         suppliers = new ArrayList<Supplier>();
-        suppliers.add(new Supplier("DE Logistics", "Hamburg", "Hans Meier"));
-        suppliers.add(new Supplier("NL Transport", "Amsterdam", "Jan Jansen"));
-        suppliers.add(new Supplier("FR Express", "Paris", "Pierre Dupont"));
+        suppliers.add(new Supplier("DE Logistics", new Address("Hamburg"), "Hans Meier"));
+        suppliers.add(new Supplier("NL Transport", new Address("Amsterdam"), "Jan Jansen"));
+        suppliers.add(new Supplier("FR Express", new Address("Paris"), "Pierre Dupont"));
     }
 
     public void addSupplier(Supplier supplier) {
         suppliers.add(supplier);
     }
 
-    public void addSupplier(String name, String address, String contact) {
+    public void addSupplier(String name, Address address, String contact) {
         Supplier supplier = new Supplier(name, address, contact);
         suppliers.add(supplier);
     }

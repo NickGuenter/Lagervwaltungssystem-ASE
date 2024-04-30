@@ -6,10 +6,10 @@ public class Supplier extends Party{
 
     private UUID supplierId;
     private String supllierName;
-    private String location;
+    private Address location;
     private String contactPerson;
     
-    public Supplier(String supllierName, String location, String contactPerson) {
+    public Supplier(String supllierName, Address location, String contactPerson) {
         super(supllierName, location); 
         supplierId = java.util.UUID.randomUUID();
         this.supllierName = supllierName;
@@ -25,7 +25,7 @@ public class Supplier extends Party{
         return supllierName;
     }
 
-    public String getLocation() {
+    public Address getLocation() {
         return location;
     }
 
@@ -35,7 +35,7 @@ public class Supplier extends Party{
 
     public void print() {
         System.out.println("Lieferant: " + supllierName);
-        System.out.println("Adresse: " + location);
+        System.out.println("Adresse: " + location.getCity());
         System.out.println("Kontaktperson: " + contactPerson);
     }
 

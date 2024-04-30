@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.lvs.Inventory;
+import com.lvs.Classes.Address;
 import com.lvs.Classes.Order;
 import com.lvs.Classes.Party;
 import com.lvs.Classes.PrivateCustomer;
@@ -32,8 +33,8 @@ public class OrderView implements View{
 
         ArrayList<Product> products = new ArrayList<>();
         products.add(new Product("Wasser", 2, 20));
-        buyOrders.addOrder(new Order(new Supplier("ChinaSup", "Hamburg", "Bern Tuni"), products));
-        sellOrders.addOrder(new Order(new PrivateCustomer("Hans Hensl", "Hamburg"), products));
+        buyOrders.addOrder(new Order(new Supplier("ChinaSup", new Address("Hamburg"), "Bern Tuni"), products));
+        sellOrders.addOrder(new Order(new PrivateCustomer("Hans Hensl", new Address("Hamburg")), products));
     }
 
     private static final String INVALID_INPUT = "Ungültige Eingabe!";

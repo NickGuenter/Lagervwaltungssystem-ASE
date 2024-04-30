@@ -3,6 +3,7 @@ package com.lvs.Manager;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import com.lvs.Classes.Address;
 import com.lvs.Classes.BusinessCustomer;
 import com.lvs.Classes.Customer;
 import com.lvs.Classes.FilialCustomer;
@@ -14,9 +15,9 @@ public class CustomerManager {
 
     public CustomerManager() {
         customers = new ArrayList<Customer>();
-        customers.add(new FilialCustomer("F01", "Hamburg", "William Doe"));
-        customers.add(new BusinessCustomer("Media Markt", "Berlin", "John Doe"));
-        customers.add(new PrivateCustomer("Max Mustermann", "Musterstraße 1"));
+        customers.add(new FilialCustomer("F01", new Address("Hamburg"), "William Doe"));
+        customers.add(new BusinessCustomer("Media Markt", new Address("Berlin"), "John Doe"));
+        customers.add(new PrivateCustomer("Max Mustermann", new Address("Dresden")));
     }
 
     public ArrayList<Customer> getCustomers() {
@@ -52,7 +53,7 @@ public class CustomerManager {
     }
 
     // OCP könnte weiter durch Verwendung einer Factory Klasse/Methode verbessert werden
-    public void addCustomer(String type, String name, String address, Optional<String> contact) {
+    public void addCustomer(String type, String name, Address address, Optional<String> contact) {
         Customer customer;
         switch (type) {
             case "Filial":

@@ -37,15 +37,6 @@ public class OrderManager {
         System.out.println();
     }
 
-    // TODO: Is this method relevant?
-    public void findOrderById(String orderId) {
-        for (Order order : orders) {
-            if (order.getOrderId().toString().equals(orderId)) {
-                order.printOrder();
-            }
-        }
-    }
-
     public void getOrdersByProduct(String productName) {
         for (Order order : orders) {
             order.getProducts().forEach(product -> {
