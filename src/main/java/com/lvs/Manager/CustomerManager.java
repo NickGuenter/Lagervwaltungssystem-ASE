@@ -1,6 +1,7 @@
 package com.lvs.Manager;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import com.lvs.Classes.BusinessCustomer;
 import com.lvs.Classes.Customer;
@@ -50,19 +51,25 @@ public class CustomerManager {
         return null;
     }
 
-    // TODO: Just one addCustomer method with a parameter for the customer type
-    public void addFilialCustomer(String filialNr, String address, String contact) {
-        FilialCustomer customer = new FilialCustomer(filialNr, address, contact);
-        customers.add(customer);
-    }
-
-    public void addBusinessCustomer(String name, String address, String contact) {
-        BusinessCustomer customer = new BusinessCustomer(name, address, contact);
-        customers.add(customer);
-    }
-
-    public void addPrivateCustomer(String name, String address) {
-        PrivateCustomer customer = new PrivateCustomer(name, address);
+    // OCP könnte weiter durch Verwendung einer Factory Klasse/Methode verbessert werden
+    public void addCustomer(String type, String name, String address, Optional<String> contact) {
+        Customer customer;
+        switch (type) {
+            case "Filial":
+            case "Business":
+                if (contact.isPresent()) {
+                    customer = type.equals("Filial") ? new FilialCustomer(name, address, contact.get())
+                            : new BusinessCustomer(name, address, contact.get());
+                } else {
+                    throw new IllegalArgumentException("Contact is required for Filial and Business customers");
+                }
+                break;
+            case "Private":
+                customer = new PrivateCustomer(name, address);
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid customer type: " + type);
+        }
         customers.add(customer);
     }
 

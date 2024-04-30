@@ -73,7 +73,7 @@ public class CustomerView implements View {
         System.out.println("Kontaktperson:");
         String contact = System.console().readLine();
 
-        customerManager.addFilialCustomer(filialNr, address, contact);
+        customerManager.addCustomer("Filial", filialNr, address, java.util.Optional.of(contact));
     }
 
     private void addBusinessCustomer() {
@@ -85,7 +85,7 @@ public class CustomerView implements View {
         System.out.println("Ansprechpartner:");
         String contact = System.console().readLine();
 
-        customerManager.addBusinessCustomer(name, address, contact);
+        customerManager.addCustomer("Business", name, address, java.util.Optional.of(contact));
     }
 
     private void addPrivateCustomer() {
@@ -95,6 +95,6 @@ public class CustomerView implements View {
         System.out.println("Adresse:");
         String address = System.console().readLine();
 
-        customerManager.addPrivateCustomer(name, address);
+        customerManager.addCustomer("Private", name, address, java.util.Optional.empty());
     }
 }
