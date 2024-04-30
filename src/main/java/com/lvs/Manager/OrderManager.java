@@ -11,11 +11,23 @@ public class OrderManager {
         orders = new ArrayList<>();
     }
 
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
+
     public void addOrder(Order order) {
         orders.add(order);
     }
 
-    public void getOrders() {
+    public double getTotalValue() {
+        double totalValue = 0;
+        for (Order order : orders) {
+            totalValue += order.getOrderValue();
+        }
+        return totalValue;
+    }
+
+    public void printOrders() {
         System.out.println("Bestellverlauf:");
         System.out.println("--------------------");
         for (Order order : orders) {

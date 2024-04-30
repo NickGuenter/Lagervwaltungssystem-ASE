@@ -11,8 +11,9 @@ public class WarehouseManagementSystem {
         OrderManager sellOrders = new OrderManager();
         CustomerManager customerManager = new CustomerManager();
         SupplierManager supplierManager = new SupplierManager();
+        Report report = new Report(inventory, buyOrders, sellOrders);
         SupplierView supplierView = new SupplierView(supplierManager);
-        ReportView reportView = new ReportView();
+        ReportView reportView = new ReportView(report);
         InventoryView inventoryView = new InventoryView(inventory);
         CustomerView customerView = new CustomerView(customerManager);
         OrderView orderView = new OrderView(buyOrders, sellOrders, inventory, customerManager, supplierManager);

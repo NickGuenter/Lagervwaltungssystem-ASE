@@ -12,6 +12,10 @@ public class Inventory {
         addProduct(new Product("Wein", 5, 50));
     }
 
+    public ArrayList<Product> getProducts() {
+        return products;
+    }
+
     public void addProduct(Product product) {
         products.add(product);
     }
@@ -77,13 +81,27 @@ public class Inventory {
         return null;
     }
 
-    public void getProducts() {
+    public void printProducts() {
         System.out.println("Inventar:");
         System.out.println("--------------------");
         System.out.println();
         for (Product product : products) {
             product.print();
             System.out.println();
+        }
+        System.out.println("--------------------");
+        System.out.println();
+    }
+
+    public void printProductsByName(String productName) {
+        System.out.println("Inventar:");
+        System.out.println("--------------------");
+        System.out.println();
+        for (Product product : products) {
+            if (product.getProductName().equals(productName)) {
+                product.print();
+                System.out.println();
+            }
         }
         System.out.println("--------------------");
         System.out.println();

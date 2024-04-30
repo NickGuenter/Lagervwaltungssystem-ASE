@@ -14,6 +14,8 @@ public class CustomerManager {
     public CustomerManager() {
         customers = new ArrayList<Customer>();
         customers.add(new FilialCustomer("F01", "Hamburg", "William Doe"));
+        customers.add(new BusinessCustomer("Media Markt", "Berlin", "John Doe"));
+        customers.add(new PrivateCustomer("Max Mustermann", "Musterstraße 1"));
     }
 
     public ArrayList<Customer> getCustomers() {
@@ -48,6 +50,7 @@ public class CustomerManager {
         return null;
     }
 
+    // TODO: Just one addCustomer method with a parameter for the customer type
     public void addFilialCustomer(String filialNr, String address, String contact) {
         FilialCustomer customer = new FilialCustomer(filialNr, address, contact);
         customers.add(customer);

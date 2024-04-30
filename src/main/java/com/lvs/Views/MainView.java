@@ -37,7 +37,7 @@ public class MainView {
             } else if (eingabe.equals("6")) {
                 break;
             } else {
-                System.out.println("Invalid input!");
+                System.out.println("Ungültige Eingabe!");
             }
         }
         scanner.close();

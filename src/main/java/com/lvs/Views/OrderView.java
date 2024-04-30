@@ -52,9 +52,9 @@ public class OrderView implements View{
                 createOrder();
             } else if (eingabe.equals("2")) {
                 System.out.println("Kaufbestellungen:");
-                buyOrders.getOrders();
+                buyOrders.printOrders();
                 System.out.println("Verkaufbestellungen:");
-                sellOrders.getOrders();
+                sellOrders.printOrders();
             } else if (eingabe.equals("3")) {
                 findOrder();
             } else if (eingabe.equals("4")) {
@@ -108,7 +108,6 @@ public class OrderView implements View{
 
         party = inputParty(kauf);
         if (party == null) {
-            System.out.println(INVALID_INPUT);
             return;
         }
 

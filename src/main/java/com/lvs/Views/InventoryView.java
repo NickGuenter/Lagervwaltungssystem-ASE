@@ -10,6 +10,6 @@ public class InventoryView implements View {
     }
 
     public void show() {
-        inventory.getProducts();
+        inventory.printProducts();
     }
 }
