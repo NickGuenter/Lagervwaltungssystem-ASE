@@ -3,14 +3,15 @@ package com.lvs;
 import java.time.LocalDateTime;
 
 import com.lvs.Manager.OrderManager;
+import com.lvs.Manager.ProductManager;
 
 public class Report {
-    Inventory inventory;
+    ProductManager productManager;
     OrderManager buyOrders;
     OrderManager sellOrders;
 
-    public Report(Inventory inventory, OrderManager buyOrders, OrderManager sellOrders) {
-        this.inventory = inventory;
+    public Report(ProductManager productManager, OrderManager buyOrders, OrderManager sellOrders) {
+        this.productManager = productManager;
         this.buyOrders = buyOrders;
         this.sellOrders = sellOrders;
     }
@@ -19,7 +20,7 @@ public class Report {
         System.out.println("Report");
         printDate();
         System.out.println();
-        inventory.printProducts();
+        productManager.printInventory();
         System.out.println("Einkauf:");
         buyOrders.printOrders();
         System.out.println("Verkauf:");
@@ -30,7 +31,7 @@ public class Report {
         System.out.println("Report zu " + productName);
         printDate();
         System.out.println();
-        inventory.printProductsByName(productName);
+        productManager.printProductsByName(productName);
         System.out.println("Einkauf:");
         buyOrders.getOrdersByProduct(productName);
         System.out.println("Verkauf:");

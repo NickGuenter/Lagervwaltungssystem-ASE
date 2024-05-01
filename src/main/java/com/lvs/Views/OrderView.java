@@ -3,7 +3,6 @@ package com.lvs.Views;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.lvs.Inventory;
 import com.lvs.Classes.Address;
 import com.lvs.Classes.Order;
 import com.lvs.Classes.Party;
@@ -12,22 +11,23 @@ import com.lvs.Classes.Product;
 import com.lvs.Classes.Supplier;
 import com.lvs.Manager.CustomerManager;
 import com.lvs.Manager.OrderManager;
+import com.lvs.Manager.ProductManager;
 import com.lvs.Manager.SupplierManager;
 
 public class OrderView implements View {
 
     OrderManager buyOrders;
     OrderManager sellOrders;
-    Inventory inventory;
+    ProductManager productManager;
     CustomerManager customerManager;
     SupplierManager supplierManager;
     Scanner scanner;
 
-    public OrderView(OrderManager buyOrders, OrderManager sellOrders, Inventory inventory,
+    public OrderView(OrderManager buyOrders, OrderManager sellOrders, ProductManager productManager,
             CustomerManager customerManager, SupplierManager supplierManager) {
         this.buyOrders = buyOrders;
         this.sellOrders = sellOrders;
-        this.inventory = inventory;
+        this.productManager = productManager;
         this.customerManager = customerManager;
         this.supplierManager = supplierManager;
         this.scanner = new Scanner(System.in);
@@ -128,15 +128,18 @@ public class OrderView implements View {
         }
 
         if (kauf.equals("v")) {
-            if (inventory.checkStock(products)) {
+            if (productManager.checkStock(products)) {
                 sellOrders.addOrder(new Order(party, products));
-                inventory.removeProducts(products);
+                productManager.removeProducts(products);
             } else {
                 System.out.println("Bestellung konnte nicht angelegt werden.");
             }
         } else if (kauf.equals("k")) {
             buyOrders.addOrder(new Order(party, products));
-            inventory.addProducts(products);
+            productManager.addProducts(products);
+        }
+        else {
+            System.out.println(INVALID_INPUT);
         }
 
     }
@@ -207,7 +210,7 @@ public class OrderView implements View {
         if (party != null) {
             return party;
         } else {
-            System.out.println(INVALID_INPUT + " oder Kunde nicht gefunden!");
+            System.out.println(INVALID_INPUT + " / Kunde nicht gefunden!");
         }
         return party;
     }
@@ -222,7 +225,7 @@ public class OrderView implements View {
         if (party != null) {
             return party;
         } else {
-            System.out.println(INVALID_INPUT + " oder Lieferant nicht gefunden!");
+            System.out.println(INVALID_INPUT + " / Lieferant nicht gefunden!");
         }
         return party;
     }

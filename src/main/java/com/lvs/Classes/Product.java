@@ -46,4 +46,8 @@ public class Product {
         System.out.println("Menge: " + productQuantity);
     }
 
+    public void setProductName(String newName) {
+        this.productName = newName;
+    }
+
 }
