@@ -55,4 +55,11 @@ public class ProductTest {
         int quantity = product.getProductQuantity();
         assertEquals(200, quantity);
     }
+
+    @Test
+    public void testSetName() {
+        product.setProductName("New Product");
+        String name = product.getProductName();
+        assertEquals("New Product", name);
+    }
 }

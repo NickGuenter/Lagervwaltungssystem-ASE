@@ -116,29 +116,13 @@ public class ProductManager {
         }
     }
 
-    public void printInventory() {
-        System.out.println("Inventar:");
-        System.out.println("--------------------");
-        System.out.println();
-        for (Product product : products) {
-            product.print();
-            System.out.println();
-        }
-        System.out.println("--------------------");
-        System.out.println();
-    }
-
-    public void printProductsByName(String productName) {
-        System.out.println("Inventar:");
-        System.out.println("--------------------");
-        System.out.println();
+    public ArrayList<Product> getProductsByName(String productName) {
+        ArrayList<Product> productsByName = new ArrayList<>();
         for (Product product : products) {
             if (product.getProductName().equals(productName)) {
-                product.print();
-                System.out.println();
+                productsByName.add(product);
             }
         }
-        System.out.println("--------------------");
-        System.out.println();
+        return productsByName;
     }
 }

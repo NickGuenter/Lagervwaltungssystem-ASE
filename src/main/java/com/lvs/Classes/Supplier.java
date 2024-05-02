@@ -1,24 +1,16 @@
 package com.lvs.Classes;
 
-import java.util.UUID;
-
 public class Supplier extends Party{
 
-    private UUID supplierId;
     private String supllierName;
     private Address location;
     private String contactPerson;
     
     public Supplier(String supllierName, Address location, String contactPerson) {
         super(supllierName, location); 
-        supplierId = java.util.UUID.randomUUID();
         this.supllierName = supllierName;
         this.location = location;
         this.contactPerson = contactPerson;
-    }
-
-    public UUID getSupplierId() {
-        return supplierId;
     }
 
     public String getSupplierName() {

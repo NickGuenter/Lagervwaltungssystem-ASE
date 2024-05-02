@@ -17,7 +17,7 @@ public class Order {
         orderId = java.util.UUID.randomUUID();
         this.party = party;
         this.products = products;
-        orderValue = getOrderValue();
+        orderValue = calculateOrderValue();
         orderQuantity = getOrderQuantity();
         date = LocalDateTime.now();
     }
@@ -30,7 +30,7 @@ public class Order {
         return result;
     }
 
-    public double getOrderValue() {
+    public double calculateOrderValue() {
         double result = 0;
         for (Product product : products) {
             result += product.getProductValue() * product.getProductQuantity();
@@ -42,7 +42,7 @@ public class Order {
         return this.orderId;
     }
 
-    public double getorderValue() {
+    public double getOrderValue() {
         return this.orderValue;
     }
 
@@ -65,14 +65,6 @@ public class Order {
             System.out.println("Product Value: " + product.getProductValue());
             System.out.println("Product Quantity: " + product.getProductQuantity());
         } 
-    }
-
-    public Supplier getSupplier() {
-        return (Supplier)this.party;
-    }
-
-    public Customer getCustomer() {
-        return (Customer)this.party;
     }
 
     public Party getParty() {

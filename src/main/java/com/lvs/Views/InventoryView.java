@@ -3,6 +3,7 @@ package com.lvs.Views;
 import java.util.Scanner;
 
 import com.lvs.Manager.ProductManager;
+import com.lvs.Printer;
 import com.lvs.Classes.Product;
 
 public class InventoryView implements View {
@@ -17,13 +18,13 @@ public class InventoryView implements View {
     public void show() {
         while (true) {
 
-            printMenu();
+            Printer.printInventoryMenu();
             int input = scanner.nextInt();
 
             switch (input) {
                 case 1:
-                    productManager.printInventory();
-                    calculateTotal();
+                    // productManager.printInventory();
+                    Printer.printInventory(productManager);
                     break;
                 case 2:
                     addProduct();
@@ -41,15 +42,6 @@ public class InventoryView implements View {
                     break;
             }
         }
-    }
-
-    public void printMenu() {
-        System.out.println("Inventar: ");
-        System.out.println("1: Inventar anzeigen");
-        System.out.println("2: Produkt hinzufügen");
-        System.out.println("3: Produkt entfernen");
-        System.out.println("4: Produkt bearbeiten");
-        System.out.println("5: Zurück");
     }
 
     public void addProduct() {
@@ -129,14 +121,4 @@ public class InventoryView implements View {
         }
     }
 
-    public void calculateTotal() {
-        double total = 0;
-
-        for (Product product : productManager.getProducts()) {
-            total += product.getProductValue() * product.getProductQuantity();
-        }
-
-        System.out.println("Gesamtpreis: " + total);
-        System.out.println();
-    }
 }

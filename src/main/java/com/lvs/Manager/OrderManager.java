@@ -22,19 +22,9 @@ public class OrderManager {
     public double getTotalValue() {
         double totalValue = 0;
         for (Order order : orders) {
-            totalValue += order.getOrderValue();
+            totalValue += order.calculateOrderValue();
         }
         return totalValue;
-    }
-
-    public void printOrders() {
-        System.out.println("Bestellverlauf:");
-        System.out.println("--------------------");
-        for (Order order : orders) {
-            order.printOrder();
-            System.out.println("--------------------");
-        }
-        System.out.println();
     }
 
     public void getOrdersByProduct(String productName) {

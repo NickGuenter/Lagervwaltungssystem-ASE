@@ -2,23 +2,21 @@ package com.lvs.Views;
 
 import java.util.Scanner;
 
-import com.lvs.Report;
+import com.lvs.Printer;
+import com.lvs.ReportGenerator;
 
 public class ReportView implements View {
-    Report report;
+    ReportGenerator report;
     Scanner scanner;
 
-    public ReportView(Report report) {
+    public ReportView(ReportGenerator report) {
         this.report = report;
         scanner = new Scanner(System.in);
     }
 
     public void show() {
         while (true) {
-            System.out.println("1: Gesamtreport anzeigen.");
-            System.out.println("2: Report für ein Produkt anzeigen.");
-            System.out.println("3: Umsatzreport.");
-            System.out.println("4: Zurück.");
+            Printer.printReportMenu();
 
             String eingabe = scanner.nextLine();
             System.out.println();

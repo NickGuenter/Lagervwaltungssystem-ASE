@@ -12,6 +12,7 @@ import com.lvs.Classes.Party;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -43,9 +44,11 @@ public class OrderTest {
     }
 
     @Test
-    public void testGetparty() {
-        Party orderparty = order.getParty();
-        assertEquals(party, orderparty);
+    public void testGetParty() {
+        Party partyNew = new Supplier("AT Logistics", new Address("Österreich"), "Stefan Kinzl");
+        assertEquals(partyNew.getName(), order.getParty().getName());
+        assertEquals(partyNew.getAddress(), order.getParty().getAddress());
+        assertEquals(((Supplier) partyNew).getContactPerson(), ((Supplier) order.getParty()).getContactPerson());
     }
 
     @Test
@@ -58,5 +61,11 @@ public class OrderTest {
     public void testGetOrderQuantity() {
         int orderQuantity = order.getOrderQuantity();
         assertEquals(300, orderQuantity);
+    }
+
+    @Test
+    public void testCalculateOrderValue() {
+        double orderValue = order.calculateOrderValue();
+        assertEquals(5000, orderValue);
     }
 }

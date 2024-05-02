@@ -24,22 +24,13 @@ public class CustomerManager {
         return customers;
     }
 
-    public void printCustomers() {
-        System.out.println("Kunden:");
-        System.out.println("-------------");
-        System.out.println();
-        for (Customer customer : customers) {
-            customer.print();
-            System.out.println();
-        }
-        System.out.println("-------------");
-        System.out.println();
-    }
-
     public void removeCustomer(String name) {
         Customer customer = findCustomer(name);
         if (customer != null) {
             customers.remove(customer);
+        }
+        else {
+            System.out.println("\nCustomer not found\n");
         }
     }
 

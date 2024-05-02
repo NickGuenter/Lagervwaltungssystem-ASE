@@ -3,6 +3,7 @@ package com.lvs.Views;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.lvs.Printer;
 import com.lvs.Classes.Address;
 import com.lvs.Classes.Order;
 import com.lvs.Classes.Party;
@@ -42,21 +43,14 @@ public class OrderView implements View {
 
     public void show() {
         while (true) {
-            System.out.println("Bestellungen");
-            System.out.println("1: Bestellung Anlegen");
-            System.out.println("2: Bestellverlauf Anzeigen");
-            System.out.println("3: Bestellung suchen");
-            System.out.println("4: Zurück");
+            Printer.printOrderMenu();
 
             String eingabe = scanner.nextLine();
 
             if (eingabe.equals("1")) {
                 createOrder();
             } else if (eingabe.equals("2")) {
-                System.out.println("Kaufbestellungen:");
-                buyOrders.printOrders();
-                System.out.println("Verkaufbestellungen:");
-                sellOrders.printOrders();
+                Printer.printOrders(buyOrders, sellOrders);
             } else if (eingabe.equals("3")) {
                 findOrder();
             } else if (eingabe.equals("4")) {
@@ -188,7 +182,6 @@ public class OrderView implements View {
         return new Product(productName, productValue, productQuantity);
     }
 
-    // TODO: Refactor this method
     public Party inputParty(String kauf) {
         Party party = null;
 
@@ -201,7 +194,7 @@ public class OrderView implements View {
     }
 
     public Party chooseCustomer() {
-        customerManager.printCustomers();
+        Printer.printCustomers(customerManager);
         System.out.println("Kundenname, Filial Nummer oder Unternehmen eingeben:");
 
         String eingabe = scanner.nextLine();

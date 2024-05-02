@@ -1,5 +1,6 @@
 package com.lvs.Views;
 
+import com.lvs.Printer;
 import com.lvs.Classes.Address;
 import com.lvs.Manager.SupplierManager;
 
@@ -13,12 +14,7 @@ public class SupplierView implements View {
     public void show() {
 
         while (true) {
-            System.out.println("Lieferantenmenu");
-            System.out.println("1: Lieferant anlegen");
-            System.out.println("2: Lieferanten anzeigen");
-            System.out.println("3: Lieferanten löschen");
-            System.out.println("4: Zurück");
-            System.out.println();
+            Printer.printSupplierMenu();
 
             String eingabe = System.console().readLine();
 
