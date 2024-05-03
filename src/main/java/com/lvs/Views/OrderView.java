@@ -204,7 +204,7 @@ public class OrderView implements View {
     }
 
     public Party chooseSupplier() {
-        supplierManager.getSuppliers();
+        Printer.printSuppliers(supplierManager);
         System.out.println(LanguageControl.getTranslation("chooseSupplier"));
 
         String eingabe = scanner.nextLine();
