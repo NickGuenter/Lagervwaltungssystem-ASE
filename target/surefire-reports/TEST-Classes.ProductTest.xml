@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="Classes.ProductTest" time="0.019" tests="7" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="Classes.ProductTest" time="0.015" tests="7" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="DE"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17.0.3.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\Nick\AppData\Local\Temp\surefire18339728021481100882\surefirebooter7720776421705150287.jar C:\Users\Nick\AppData\Local\Temp\surefire18339728021481100882 2024-05-02T12-15-50_855-jvmRun1 surefire5932015857635330012tmp surefire_09850283665807080524tmp"/>
+    <property name="sun.java.command" value="C:\Users\Nick\AppData\Local\Temp\surefire3364014448216591832\surefirebooter17156827895201160522.jar C:\Users\Nick\AppData\Local\Temp\surefire3364014448216591832 2024-05-03T15-19-44_825-jvmRun1 surefire16891304474444941893tmp surefire_017521293038511898059tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="c:\Users\Nick\OneDrive\Desktop\Advanced Software Engineering\LVS\target\test-classes;c:\Users\Nick\OneDrive\Desktop\Advanced Software Engineering\LVS\target\classes;C:\Users\Nick\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\Nick\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Nick\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\Nick\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Nick\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\Nick\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\Nick\.m2\repository\org\mockito\mockito-core\3.12.4\mockito-core-3.12.4.jar;C:\Users\Nick\.m2\repository\net\bytebuddy\byte-buddy\1.11.13\byte-buddy-1.11.13.jar;C:\Users\Nick\.m2\repository\net\bytebuddy\byte-buddy-agent\1.11.13\byte-buddy-agent-1.11.13.jar;C:\Users\Nick\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Nick\AppData\Local\Temp\surefire18339728021481100882\surefirebooter7720776421705150287.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Nick\AppData\Local\Temp\surefire3364014448216591832\surefirebooter17156827895201160522.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.3.1+2-LTS-6"/>
@@ -56,7 +56,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testGetValue" classname="Classes.ProductTest" time="0.004"/>
+  <testcase name="testGetValue" classname="Classes.ProductTest" time="0.002"/>
   <testcase name="testGetName" classname="Classes.ProductTest" time="0.001"/>
   <testcase name="testGetProductId" classname="Classes.ProductTest" time="0.001"/>
   <testcase name="testSetQuantity" classname="Classes.ProductTest" time="0.001"/>
