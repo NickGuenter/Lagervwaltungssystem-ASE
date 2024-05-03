@@ -1,8 +1,8 @@
 package com.lvs.Views;
 
-import com.lvs.LanguageControl;
 import com.lvs.Printer;
 import com.lvs.Classes.Address;
+import com.lvs.Language.LanguageControl;
 import com.lvs.Manager.CustomerManager;
 
 public class CustomerView implements View {

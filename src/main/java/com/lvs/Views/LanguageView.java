@@ -2,10 +2,11 @@ package com.lvs.Views;
 
 import java.util.Scanner;
 
-import com.lvs.LanguageControl;
-import com.lvs.LanguageEnglish;
-import com.lvs.LanguageGerman;
 import com.lvs.Printer;
+import com.lvs.Language.LanguageControl;
+import com.lvs.Language.LanguageEnglish;
+import com.lvs.Language.LanguageGerman;
+import com.lvs.Language.LanguageSpanish;
 
 public class LanguageView implements View {
     Scanner scanner;
@@ -25,6 +26,9 @@ public class LanguageView implements View {
                     return;
                 case "2":
                     LanguageControl.setLanguageGerman(LanguageGerman.getLanguage());
+                    return;
+                case "3":
+                    LanguageControl.setLanguageSpanish(LanguageSpanish.getLanguage());
                     return;
                 default:
                     System.out.println(LanguageControl.getTranslation("invalidInput"));

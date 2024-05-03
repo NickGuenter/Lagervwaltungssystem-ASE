@@ -25,18 +25,6 @@ public class SupplierManager {
         suppliers.add(supplier);
     }
 
-    public void getSuppliers() {
-        System.out.println("Lieferanten:");
-        System.out.println("-------------");
-        System.out.println();
-        for (Supplier supplier : suppliers) {
-            supplier.print();      
-            System.out.println();
-        }
-        System.out.println("-------------");
-        System.out.println();
-    }
-
     public Supplier findSupplier(String name) {
         for (Supplier supplier : suppliers) {
             if (supplier.getName().equals(name)) {
@@ -51,5 +39,9 @@ public class SupplierManager {
         if (supplier != null) {
             suppliers.remove(supplier);
         }
+    }
+
+    public ArrayList<Supplier> getSuppliers() {
+        return suppliers;
     }
 }

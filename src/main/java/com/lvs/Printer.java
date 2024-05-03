@@ -6,18 +6,20 @@ import java.util.Map;
 import com.lvs.Classes.Customer;
 import com.lvs.Classes.Order;
 import com.lvs.Classes.Product;
+import com.lvs.Classes.Supplier;
+import com.lvs.Language.LanguageControl;
 import com.lvs.Manager.CustomerManager;
 import com.lvs.Manager.OrderManager;
 import com.lvs.Manager.ProductManager;
+import com.lvs.Manager.SupplierManager;
 import com.lvs.Views.View;
 
 public class Printer {
     public static void printInventory(ProductManager productManager) {
         ArrayList<Product> products = productManager.getProducts();
         System.out.println("\n====================");
-        System.out.println("   INVENTAR");
+        System.out.println("   " + LanguageControl.getTranslation("inventory").toUpperCase());
         System.out.println("====================\n");
-        System.out.println(productManager.getProducts().size() + " Produkte im Inventar\n");
         for (Product product : products) {
             product.print();
             System.out.println();
@@ -49,22 +51,22 @@ public class Printer {
 
     public static void printOrderMenu() {
         System.out.println("\n====================");
-        System.out.println("   BESTELLUNGEN");
+        System.out.println("   " + LanguageControl.getTranslation("orders").toUpperCase());
         System.out.println("====================\n");
-        System.out.println("1: Bestellung hinzufügen");
-        System.out.println("2: Bestellung entfernen");
-        System.out.println("3: Bestellungen anzeigen");
-        System.out.println("4: Zurück\n");
+        System.out.println("1: " + LanguageControl.getTranslation("addOrder"));
+        System.out.println("2: " + LanguageControl.getTranslation("showOrders"));
+        System.out.println("3: " + LanguageControl.getTranslation("findOrder"));
+        System.out.println("4: " + LanguageControl.getTranslation("back") + "\n");
     }
 
     public static void printSupplierMenu() {
         System.out.println("\n====================");
-        System.out.println("   LIEFERANTEN");
+        System.out.println("   " + LanguageControl.getTranslation("suppliers").toUpperCase());
         System.out.println("====================\n");
-        System.out.println("1: Lieferant hinzufügen");
-        System.out.println("2: Lieferant entfernen");
-        System.out.println("3: Lieferanten anzeigen");
-        System.out.println("4: Zurück\n");
+        System.out.println("1: " + LanguageControl.getTranslation("addSupplier"));
+        System.out.println("2: " + LanguageControl.getTranslation("showSuppliers"));
+        System.out.println("3: " + LanguageControl.getTranslation("removeSupplier"));
+        System.out.println("4: " + LanguageControl.getTranslation("back") + "\n");
     }
 
     public static void printCustomerMenu() {
@@ -79,23 +81,23 @@ public class Printer {
 
     public static void printReportMenu() {
         System.out.println("\n====================");
-        System.out.println("   REPORTS");
+        System.out.println("   " + LanguageControl.getTranslation("reports").toUpperCase());
         System.out.println("====================\n");
-        System.out.println("1: Gesamtreport anzeigen");
-        System.out.println("2: Report für ein Produkt anzeigen");
-        System.out.println("3: Umsatzreport");
-        System.out.println("4: Zurück\n");
+        System.out.println("1: " + LanguageControl.getTranslation("overallReport"));
+        System.out.println("2: " + LanguageControl.getTranslation("productReport"));
+        System.out.println("3: " + LanguageControl.getTranslation("revenueReport"));
+        System.out.println("4: " + LanguageControl.getTranslation("back") + "\n");
     }
 
     public static void printInventoryMenu() {
         System.out.println("\n====================");
-        System.out.println("   INVENTAR");
+        System.out.println("   " + LanguageControl.getTranslation("inventory").toUpperCase());
         System.out.println("====================\n");
-        System.out.println("1: Inventar anzeigen");
-        System.out.println("2: Produkt hinzufügen");
-        System.out.println("3: Produkt entfernen");
-        System.out.println("4: Produkt bearbeiten");
-        System.out.println("5: Zurück\n");
+        System.out.println("1: " + LanguageControl.getTranslation("showInventory"));
+        System.out.println("2: " + LanguageControl.getTranslation("addProduct"));
+        System.out.println("3: " + LanguageControl.getTranslation("removeProduct"));
+        System.out.println("4: " + LanguageControl.getTranslation("editProduct"));
+        System.out.println("5: " + LanguageControl.getTranslation("back") + "\n");
     }
 
     public static void printLanguageMenu() {
@@ -103,23 +105,23 @@ public class Printer {
         System.out.println("   " + LanguageControl.getTranslation("language").toUpperCase());
         System.out.println("====================\n");
         System.out.println("1: " + LanguageControl.getTranslation("english"));
-        System.out.println("2: " + LanguageControl.getTranslation("german") + "\n");
+        System.out.println("2: " + LanguageControl.getTranslation("german"));
+        System.out.println("3: " + LanguageControl.getTranslation("spanish") + "\n");
     }
-
 
     public static void printOrders(OrderManager buyOrders, OrderManager sellOrders) {
         System.out.println("\n====================");
-        System.out.println("   BESTELLÜBERSICHT");
+        System.out.println("   " + LanguageControl.getTranslation("orders").toUpperCase());
         System.out.println("====================\n");
-        System.out.println("   KAUFBESTELLUNGEN:");
+        System.out.println("   " + LanguageControl.getTranslation("buyOrders").toUpperCase());
         System.out.println();
-        for ( Order order : buyOrders.getOrders() ) {
+        for (Order order : buyOrders.getOrders()) {
             order.printOrder();
             System.out.println("");
         }
-        System.out.println("   VERKAUFSBESTELLUNGEN:");
+        System.out.println("   " + LanguageControl.getTranslation("sellOrders").toUpperCase());
         System.out.println();
-        for ( Order order : sellOrders.getOrders() ) {
+        for (Order order : sellOrders.getOrders()) {
             order.printOrder();
             System.out.println("");
         }
@@ -153,4 +155,59 @@ public class Printer {
             }
         }
     }
+
+    public static void printSearchParty(OrderManager buyOrders, OrderManager sellOrders, String partyName) {
+        System.out.println("\n====================");
+        System.out.println("   " + partyName.toUpperCase());
+        System.out.println("====================\n");
+
+        System.out.println("   " + LanguageControl.getTranslation("buyOrders").toUpperCase());
+        System.out.println();
+
+        ArrayList<Order> ordersByParty = buyOrders.getOrdersByParty(partyName);
+
+        for (Order order : ordersByParty) {
+                order.printOrder();
+                System.out.println("");
+        }
+        System.out.println("   " + LanguageControl.getTranslation("sellOrders").toUpperCase());
+        for (Order order : ordersByParty) {
+                order.printOrder();
+                System.out.println("");
+        }
+        System.out.println();
+    }
+
+    public static void printSearchProduct(OrderManager buyOrders, OrderManager sellOrders, String productName) {
+        System.out.println("\n====================");
+        System.out.println("   " + productName.toUpperCase());
+        System.out.println("====================\n");
+
+        System.out.println("   " + LanguageControl.getTranslation("buyOrders").toUpperCase());
+        System.out.println();
+
+        ArrayList<Order> ordersByProduct = buyOrders.getOrdersByProduct(productName);
+
+        for ( Order order : ordersByProduct ) {
+            order.printOrder();
+            System.out.println("");
+        }
+        System.out.println("   " + LanguageControl.getTranslation("sellOrders").toUpperCase());
+        for ( Order order : ordersByProduct ) {
+            order.printOrder();
+            System.out.println("");
+        }
+        System.out.println();
+        }
+
+        public static void printSuppliers(SupplierManager supplierManager) {
+            System.out.println("\n====================");
+            System.out.println("   " + LanguageControl.getTranslation("suppliers").toUpperCase());
+            System.out.println("====================\n");
+            for (Supplier supplier : supplierManager.getSuppliers()) {
+                supplier.print();
+                System.out.println();
+            }
+        }
+
 }

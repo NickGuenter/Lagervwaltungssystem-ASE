@@ -1,5 +1,7 @@
 package com.lvs.Classes;
 
+import com.lvs.Language.LanguageControl;
+
 public class BusinessCustomer extends Customer{
 
     private String contactPerson;
@@ -23,9 +25,9 @@ public class BusinessCustomer extends Customer{
 
     @Override
     public void print() {
-        System.out.println("Unternehmen: " + name);
-        System.out.println("Adresse: " + getAddress());
-        System.out.println("Ansprechpartner: " + contactPerson);
+        System.out.println(LanguageControl.getTranslation("businessCustomer") + ": " + name);
+        System.out.println(LanguageControl.getTranslation("address") + ": " + getAddress());
+        System.out.println(LanguageControl.getTranslation("contactPerson") + ": " + contactPerson);
     }
 
 }

@@ -27,24 +27,30 @@ public class OrderManager {
         return totalValue;
     }
 
-    public void getOrdersByProduct(String productName) {
+    public ArrayList<Order> getOrdersByProduct(String productName) {
+        ArrayList<Order> ordersByProduct = new ArrayList<>();
+
         for (Order order : orders) {
             order.getProducts().forEach(product -> {
                 if (product.getProductName().equals(productName)) {
-                    order.printOrder();
-                    System.out.println("--------------------");
+                    ordersByProduct.add(order);
                 }
             });
         }
+
+        return ordersByProduct;
     }
 
-    public void getOrdersByParty(String partyName) {
+    public ArrayList<Order> getOrdersByParty(String partyName) {
+        ArrayList<Order> ordersByParty = new ArrayList<>();
+
         for (Order order : orders) {
             if (order.getParty().getName().equals(partyName)) {
-                order.printOrder();
-                System.out.println("--------------------");
+                ordersByParty.add(order);
             }
         }
+
+        return ordersByParty;
     }
 
 }

@@ -10,6 +10,7 @@ import com.lvs.Classes.Party;
 import com.lvs.Classes.PrivateCustomer;
 import com.lvs.Classes.Product;
 import com.lvs.Classes.Supplier;
+import com.lvs.Language.LanguageControl;
 import com.lvs.Manager.CustomerManager;
 import com.lvs.Manager.OrderManager;
 import com.lvs.Manager.ProductManager;
@@ -39,8 +40,6 @@ public class OrderView implements View {
         sellOrders.addOrder(new Order(new PrivateCustomer("Hans Hensl", new Address("Hamburg")), products));
     }
 
-    private static final String INVALID_INPUT = "Ungültige Eingabe!";
-
     public void show() {
         while (true) {
             Printer.printOrderMenu();
@@ -56,16 +55,16 @@ public class OrderView implements View {
             } else if (eingabe.equals("4")) {
                 break;
             } else {
-                System.out.println(INVALID_INPUT);
+                System.out.println(LanguageControl.getTranslation("invalidInput"));
             }
         }
     }
 
     private void findOrder() {
-        System.out.println("Bestellung suchen nach:");
-        System.out.println("1: Kunden oder Lieferanten");
-        System.out.println("2: Produkt");
-        System.out.println("3: Zurück");
+        System.out.println(LanguageControl.getTranslation("findOrderText"));
+        System.out.println("1: " + LanguageControl.getTranslation("customer") + "/" + LanguageControl.getTranslation("supplier"));
+        System.out.println("2: " + LanguageControl.getTranslation("product"));
+        System.out.println("3: " + LanguageControl.getTranslation("back") + "\n");
 
         String eingabe = scanner.nextLine();
 
@@ -79,35 +78,31 @@ public class OrderView implements View {
             case "3":
                 break;
             default:
-                System.out.println(INVALID_INPUT);
+                System.out.println(LanguageControl.getTranslation("invalidInput"));
                 break;
         }
         System.out.println();
     }
 
     public void searchForParty() {
-        System.out.println("Kunden- oder Lieferantennamen eingeben:");
+        System.out.println(LanguageControl.getTranslation("searchParty")); 
         String partyName = scanner.nextLine();
-        System.out.println("Bestellsuche nach " + partyName + ":");
-        System.out.println("--------------------");
-        buyOrders.getOrdersByParty(partyName);
-        sellOrders.getOrdersByParty(partyName);
+
+        Printer.printSearchParty(buyOrders, sellOrders, partyName);
     }
 
     public void searchForProduct() {
-        System.out.println("Produktname eingeben:");
+        System.out.println(LanguageControl.getTranslation("searchProduct"));
         String productName = scanner.nextLine();
-        System.out.println("Bestellsuche nach " + productName + ":");
-        System.out.println("--------------------");
-        buyOrders.getOrdersByProduct(productName);
-        sellOrders.getOrdersByProduct(productName);
+        
+        Printer.printSearchProduct(buyOrders, sellOrders, productName);
     }
 
     private void createOrder() {
         Party party = null;
         ArrayList<Product> products = new ArrayList<>();
 
-        System.out.println("Kauf oder Verkauf? (k/v)");
+        System.out.println(LanguageControl.getTranslation("buyOrSell"));
         String kauf = scanner.nextLine();
 
         party = inputParty(kauf);
@@ -117,7 +112,7 @@ public class OrderView implements View {
 
         products = addProduct();
         if (products.isEmpty()) {
-            System.out.println("Es muss mindestens ein Produkt hinzugefügt werden!");
+            System.out.println(LanguageControl.getTranslation("noProductAdded"));
             return;
         }
 
@@ -126,14 +121,14 @@ public class OrderView implements View {
                 sellOrders.addOrder(new Order(party, products));
                 productManager.removeProducts(products);
             } else {
-                System.out.println("Bestellung konnte nicht angelegt werden.");
+                System.out.println(LanguageControl.getTranslation("orderError"));
             }
         } else if (kauf.equals("k")) {
             buyOrders.addOrder(new Order(party, products));
             productManager.addProducts(products);
         }
         else {
-            System.out.println(INVALID_INPUT);
+            System.out.println(LanguageControl.getTranslation("invalidInput"));
         }
 
     }
@@ -141,7 +136,7 @@ public class OrderView implements View {
     public ArrayList<Product> addProduct() {
         ArrayList<Product> products = new ArrayList<>();
         while (true) {
-            System.out.println("Produkt hinzufügen? (j/n)");
+            System.out.println(LanguageControl.getTranslation("addProductToOrder"));
             String eingabe = scanner.nextLine();
 
             switch (eingabe) {
@@ -154,28 +149,28 @@ public class OrderView implements View {
                     }
                     break;
                 default:
-                    System.out.println(INVALID_INPUT);
+                    System.out.println(LanguageControl.getTranslation("invalidInput"));
             }
         }
     }
 
     public Product createProduct() {
-        System.out.println("Produktname eingeben:");
+        System.out.println(LanguageControl.getTranslation("productName"));
         String productName = scanner.nextLine();
-        System.out.println("Produktwert eingeben:");
+        System.out.println(LanguageControl.getTranslation("productPrice"));
         double productValue;
         try {
             productValue = Double.valueOf(scanner.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println(INVALID_INPUT);
+            System.out.println(LanguageControl.getTranslation("invalidInput"));
             return null;
         }
-        System.out.println("Produktmenge eingeben:");
+        System.out.println(LanguageControl.getTranslation("productQuantity"));
         int productQuantity;
         try {
             productQuantity = Integer.valueOf(scanner.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println(INVALID_INPUT);
+            System.out.println(LanguageControl.getTranslation("invalidInput"));
             return null;
         }
 
@@ -195,7 +190,7 @@ public class OrderView implements View {
 
     public Party chooseCustomer() {
         Printer.printCustomers(customerManager);
-        System.out.println("Kundenname, Filial Nummer oder Unternehmen eingeben:");
+        System.out.println(LanguageControl.getTranslation("chooseCustomer"));
 
         String eingabe = scanner.nextLine();
         Party party = customerManager.findCustomer(eingabe);
@@ -203,14 +198,14 @@ public class OrderView implements View {
         if (party != null) {
             return party;
         } else {
-            System.out.println(INVALID_INPUT + " / Kunde nicht gefunden!");
+            System.out.println(LanguageControl.getTranslation("customerError"));
         }
         return party;
     }
 
     public Party chooseSupplier() {
         supplierManager.getSuppliers();
-        System.out.println("Lieferanten Name eingeben:");
+        System.out.println(LanguageControl.getTranslation("chooseSupplier"));
 
         String eingabe = scanner.nextLine();
         Party party = supplierManager.findSupplier(eingabe);
@@ -218,7 +213,7 @@ public class OrderView implements View {
         if (party != null) {
             return party;
         } else {
-            System.out.println(INVALID_INPUT + " / Lieferant nicht gefunden!");
+            System.out.println(LanguageControl.getTranslation("supplierError"));
         }
         return party;
     }

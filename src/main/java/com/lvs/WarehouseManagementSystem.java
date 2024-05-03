@@ -1,5 +1,7 @@
 package com.lvs;
 
+import com.lvs.Language.LanguageControl;
+import com.lvs.Language.LanguageEnglish;
 import com.lvs.Manager.*;
 import com.lvs.Views.*;
 

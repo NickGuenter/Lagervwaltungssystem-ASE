@@ -18,7 +18,7 @@ public class ReportGenerator {
 
     public void printOverallReport() {
         System.out.println("\n====================");
-        System.out.println("   REPORT vom " + getDate());
+        System.out.println("   REPORT " + getDate());
         System.out.println("====================");
         System.out.println();
         Printer.printInventory(productManager);
@@ -27,20 +27,18 @@ public class ReportGenerator {
 
     public void printProductReport(String productName) {
         System.out.println("\n====================");
-        System.out.println("   REPORT zu " + productName + " vom " + getDate());
+        System.out.println("   REPORT: " + productName + " " + getDate());
         System.out.println("====================");
         System.out.println();
+        
         Printer.printProductsByName(productManager, productName);
-        System.out.println("Einkauf:");
-        buyOrders.getOrdersByProduct(productName);
-        System.out.println("Verkauf:");
-        sellOrders.getOrdersByProduct(productName);
-        System.out.println();
+        
+        Printer.printSearchProduct(buyOrders, sellOrders, productName);
     }
 
     public void printRevenueReport() {
         System.out.println("\n====================");
-        System.out.println("   UMSATZREPORT vom " + getDate());
+        System.out.println("   UMSATZREPORT " + getDate());
         System.out.println("====================");
         System.out.println();
         System.out.println("   EINKAUF:");

@@ -1,5 +1,7 @@
 package com.lvs.Classes;
 
+import com.lvs.Language.LanguageControl;
+
 public class Supplier extends Party{
 
     private String supllierName;
@@ -26,9 +28,9 @@ public class Supplier extends Party{
     }
 
     public void print() {
-        System.out.println("Lieferant: " + supllierName);
-        System.out.println("Adresse: " + location.getCity());
-        System.out.println("Kontaktperson: " + contactPerson);
+        System.out.println(LanguageControl.getTranslation("supplier") + ": " + name);
+        System.out.println(LanguageControl.getTranslation("address") + ": " + getAddress());
+        System.out.println(LanguageControl.getTranslation("contactPerson") + ": " + contactPerson);
     }
 
 }

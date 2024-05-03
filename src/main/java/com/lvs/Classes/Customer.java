@@ -1,5 +1,7 @@
 package com.lvs.Classes;
 
+import com.lvs.Language.LanguageControl;
+
 public class Customer extends Party{
 
     public Customer(String name, Address address) {
@@ -7,8 +9,8 @@ public class Customer extends Party{
     }
 
     public void print() {
-        System.out.println("Name: " + name);
-        System.out.println("Adresse: " + getAddress());
+        System.out.println(LanguageControl.getTranslation("customer") + ": " + getName());
+        System.out.println(LanguageControl.getTranslation("address") + ": " + getAddress());
     }
 
 }

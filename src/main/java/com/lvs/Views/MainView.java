@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.lvs.LanguageControl;
 import com.lvs.Printer;
+import com.lvs.Language.LanguageControl;
 
 public class MainView implements View {
     private Map<String, View> views;

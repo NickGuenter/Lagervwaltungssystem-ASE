@@ -1,4 +1,4 @@
-package com.lvs;
+package com.lvs.Language;
 
 import java.util.Map;
 
@@ -10,6 +10,10 @@ public class LanguageControl {
     }
 
     public static void setLanguageEnglish(Map<String, String> language) {
+        LanguageControl.currentLanguage = language;
+    }
+
+    public static void setLanguageSpanish(Map<String, String> language) {
         LanguageControl.currentLanguage = language;
     }
 
