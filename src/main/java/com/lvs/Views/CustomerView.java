@@ -5,7 +5,7 @@ import com.lvs.Classes.Address;
 import com.lvs.Language.LanguageControl;
 import com.lvs.Manager.CustomerManager;
 
-public class CustomerView implements View {
+public class CustomerView implements IView {
 
     CustomerManager customerManager;
 

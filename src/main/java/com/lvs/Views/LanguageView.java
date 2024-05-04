@@ -8,7 +8,7 @@ import com.lvs.Language.LanguageEnglish;
 import com.lvs.Language.LanguageGerman;
 import com.lvs.Language.LanguageSpanish;
 
-public class LanguageView implements View {
+public class LanguageView implements IView {
     Scanner scanner;
     
     public LanguageView() {

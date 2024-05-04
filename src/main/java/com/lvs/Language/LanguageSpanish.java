@@ -57,17 +57,22 @@ public class LanguageSpanish {
         spanish.put("noProductAdded", "¡Debe agregar al menos un producto al pedido!");
         spanish.put("orderError", "¡No se pudo crear el pedido!");
         spanish.put("addProductToOrder", "¿Agregar producto? (j/n)");
-        spanish.put("chooseCustomer", "Ingrese el nombre del cliente, el nombre de la empresa o el número de sucursal:");
+        spanish.put("chooseCustomer",
+                "Ingrese el nombre del cliente, el nombre de la empresa o el número de sucursal:");
         spanish.put("chooseSupplier", "Ingrese el nombre del proveedor:");
         spanish.put("customerError", "¡No se pudo encontrar al cliente!");
         spanish.put("supplierError", "¡No se pudo encontrar al proveedor!");
 
         // Reports
         spanish.put("reports", "Informes");
+        spanish.put("report", "Informe");
         spanish.put("showReports", "Mostrar informes");
         spanish.put("overallReport", "Informe general");
         spanish.put("productReport", "Informe de producto");
         spanish.put("revenueReport", "Informe de ingresos");
+        spanish.put("buy", "Compra");
+        spanish.put("sell", "Venta");
+        spanish.put("totalRevenue", "Ingresos totales");
 
         // Products & Inventory
         spanish.put("inventory", "Inventario");
@@ -86,6 +91,17 @@ public class LanguageSpanish {
         spanish.put("newProductName", "Ingrese el nuevo nombre del producto:");
         spanish.put("newProductPrice", "Ingrese el nuevo precio del producto:");
         spanish.put("newProductQuantity", "Ingrese la nueva cantidad del producto:");
+
+        // Authentication
+        spanish.put("login", "Iniciar sesión");
+        spanish.put("register", "Registrarse");
+        spanish.put("username", "Nombre de usuario");
+        spanish.put("password", "Contraseña");
+        spanish.put("loginSuccessful", "¡Inicio de sesión exitoso!");
+        spanish.put("loginFailed", "¡Error en el inicio de sesión!");
+        spanish.put("registerSuccessful", "¡Registro exitoso!");
+        spanish.put("usernameExists", "El nombre de usuario ya existe. Por favor, elige otro.");
+        spanish.put("invalidPassword", "Contraseña inválida. Debe tener al menos 8 caracteres y contener al menos un dígito, una letra minúscula y una letra mayúscula.");
     }
 
     public static Map<String, String> getLanguage() {

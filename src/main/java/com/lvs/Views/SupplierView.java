@@ -5,7 +5,7 @@ import com.lvs.Classes.Address;
 import com.lvs.Language.LanguageControl;
 import com.lvs.Manager.SupplierManager;
 
-public class SupplierView implements View {
+public class SupplierView implements IView {
     SupplierManager supplierManager;
 
     public SupplierView(SupplierManager supplierManager) {

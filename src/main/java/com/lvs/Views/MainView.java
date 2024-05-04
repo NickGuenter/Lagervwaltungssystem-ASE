@@ -7,9 +7,9 @@ import java.util.Scanner;
 import com.lvs.Printer;
 import com.lvs.Language.LanguageControl;
 
-public class MainView implements View {
-    private Map<String, View> views;
-    private Map<View, String> viewsText;
+public class MainView implements IView {
+    private Map<String, IView> views;
+    private Map<IView, String> viewsText;
 
     public MainView(OrderView orderView, InventoryView inventoryView, ReportView reportView, SupplierView supplierView,
             CustomerView customerView, LanguageView languageView) {
@@ -28,7 +28,7 @@ public class MainView implements View {
 
             String eingabe = scanner.nextLine();
 
-            View view = views.get(eingabe);
+            IView view = views.get(eingabe);
             if (view != null) {
                 view.show();
             } else if (eingabe.equals("x")) {

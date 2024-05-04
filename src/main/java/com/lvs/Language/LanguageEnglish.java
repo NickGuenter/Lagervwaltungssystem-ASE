@@ -66,10 +66,14 @@ public class LanguageEnglish {
 
         // Reports
         english.put("reports", "Reports");
+        english.put("report", "Report");
         english.put("showReports", "Show Reports");
         english.put("overallReport", "Overall Report");
         english.put("productReport", "Product Report");
         english.put("revenueReport", "Revenue Report");
+        english.put("buy", "Buy");
+        english.put("sell", "Sell");
+        english.put("totalRevenue", "Total Revenue");
 
         // Products & Inventory
         english.put("inventory", "Inventory");
@@ -88,6 +92,17 @@ public class LanguageEnglish {
         english.put("newProductName", "Enter new product name:");
         english.put("newProductPrice", "Enter new product price:");
         english.put("newProductQuantity", "Enter new product quantity:");
+
+        // Authentication
+        english.put("login", "Login");
+        english.put("register", "Register");
+        english.put("username", "Username");
+        english.put("password", "Password");
+        english.put("loginSuccessful", "Login successful!");
+        english.put("loginFailed", "Login failed!");
+        english.put("registerSuccessful", "Registration successful!");
+        english.put("usernameExists", "Username already exists. Please choose another one.");
+        english.put("invalidPassword", "Invalid password. It must be at least 8 characters long and contain at least one digit, one lowercase letter, and one uppercase letter.");
     }
 
     public static Map<String, String> getLanguage() {

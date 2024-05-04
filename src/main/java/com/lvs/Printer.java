@@ -12,9 +12,42 @@ import com.lvs.Manager.CustomerManager;
 import com.lvs.Manager.OrderManager;
 import com.lvs.Manager.ProductManager;
 import com.lvs.Manager.SupplierManager;
-import com.lvs.Views.View;
+import com.lvs.Views.IView;
 
 public class Printer {
+    public static void printMenuName() {
+        
+    }
+
+    public static void printAnimatedLoadingBar() {
+        int direction = 1;
+        int position = 0;
+        int length = 30;
+    
+        for (int i = 0; i <= length * 2; i++) {
+            System.out.print("\rLoading: [");
+            for (int j = 0; j < length; j++) {
+                if (j == position) {
+                    System.out.print("#");
+                } else {
+                    System.out.print("=");
+                }
+            }
+            System.out.print("] " + Math.min(100, (int) ((i / (float) (length * 2)) * 100)) + "%");
+    
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+    
+            position += direction;
+            if (position == length - 1 || position == 0) {
+                direction *= -1;
+            }
+        }
+    }
+
     public static void printInventory(ProductManager productManager) {
         ArrayList<Product> products = productManager.getProducts();
         System.out.println("\n====================");
@@ -39,7 +72,7 @@ public class Printer {
         System.out.println();
     }
 
-    public static void printMainMenu(Map<String, View> views, Map<View, String> viewsText) {
+    public static void printMainMenu(Map<String, IView> views, Map<IView, String> viewsText) {
         System.out.println("\n====================");
         System.out.println("   " + LanguageControl.getTranslation("mainMenu").toUpperCase());
         System.out.println("====================\n");
@@ -107,6 +140,15 @@ public class Printer {
         System.out.println("1: " + LanguageControl.getTranslation("english"));
         System.out.println("2: " + LanguageControl.getTranslation("german"));
         System.out.println("3: " + LanguageControl.getTranslation("spanish") + "\n");
+    }
+
+    public static void printAuthMenu() {
+        System.out.println("\n====================");
+        System.out.println("   " + LanguageControl.getTranslation("authentication").toUpperCase());
+        System.out.println("====================\n");
+        System.out.println("1: " + LanguageControl.getTranslation("login"));
+        System.out.println("2: " + LanguageControl.getTranslation("register"));
+        System.out.println("3: " + LanguageControl.getTranslation("exit") + "\n");
     }
 
     public static void printOrders(OrderManager buyOrders, OrderManager sellOrders) {

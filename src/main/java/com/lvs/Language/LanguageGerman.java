@@ -66,10 +66,14 @@ public class LanguageGerman {
 
         // Reports
         german.put("reports", "Berichte");
+        german.put("report", "Bericht");
         german.put("showReports", "Berichte anzeigen");
         german.put("overallReport", "Gesamtbericht");
         german.put("productReport", "Produktbericht");
         german.put("revenueReport", "Umsatzbericht");
+        german.put("buy", "Einkauf");
+        german.put("sell", "Verkauf");
+        german.put("totalRevenue", "Gesamtumsatz");
 
         // Products & Inventory
         german.put("inventory", "Inventar");
@@ -88,6 +92,17 @@ public class LanguageGerman {
         german.put("newProductName", "Neuen Produktnamen eingeben:");
         german.put("newProductPrice", "Neuen Produktpreis eingeben:");
         german.put("newProductQuantity", "Neue Produktmenge eingeben:");
+
+        // Authentication
+        german.put("login", "Anmelden");
+        german.put("register", "Registrieren");
+        german.put("username", "Benutzername");
+        german.put("password", "Passwort");
+        german.put("loginSuccessful", "Anmeldung erfolgreich!");
+        german.put("loginFailed", "Anmeldung fehlgeschlagen!");
+        german.put("registerSuccessful", "Registrierung erfolgreich!");
+        german.put("usernameExists", "Benutzername existiert bereits. Bitte wählen Sie einen anderen.");
+        german.put("invalidPassword", "Ungültiges Passwort. Es muss mindestens 8 Zeichen lang sein und mindestens eine Ziffer, einen Kleinbuchstaben und einen Großbuchstaben enthalten.");
     }
 
     public static Map<String, String> getLanguage() {

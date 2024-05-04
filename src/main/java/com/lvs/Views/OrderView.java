@@ -16,7 +16,7 @@ import com.lvs.Manager.OrderManager;
 import com.lvs.Manager.ProductManager;
 import com.lvs.Manager.SupplierManager;
 
-public class OrderView implements View {
+public class OrderView implements IView {
 
     OrderManager buyOrders;
     OrderManager sellOrders;

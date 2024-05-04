@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.lvs.Printer;
 import com.lvs.ReportGenerator;
 
-public class ReportView implements View {
+public class ReportView implements IView {
     ReportGenerator report;
     Scanner scanner;
 
@@ -23,15 +23,18 @@ public class ReportView implements View {
 
             switch (eingabe) {
                 case "1":
+                    Printer.printAnimatedLoadingBar();
                     report.printOverallReport();
                     break;
                 case "2":
                     System.out.println("Produktname eingeben:");
                     String productName = scanner.nextLine();
+                    Printer.printAnimatedLoadingBar();
                     System.out.println();
                     report.printProductReport(productName);
                     break;
                 case "3":
+                    Printer.printAnimatedLoadingBar();
                     report.printRevenueReport();
                     break;
                 case "4":

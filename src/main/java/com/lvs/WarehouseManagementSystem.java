@@ -9,6 +9,7 @@ public class WarehouseManagementSystem {
 
     public static void main(String[] args) {
         LanguageControl.setLanguageEnglish(LanguageEnglish.getLanguage());
+        AuthView authView = new AuthView(new Authentication());
         ProductManager productManager = new ProductManager();
         OrderManager buyOrders = new OrderManager();
         OrderManager sellOrders = new OrderManager();
@@ -22,6 +23,8 @@ public class WarehouseManagementSystem {
         CustomerView customerView = new CustomerView(customerManager);
         OrderView orderView = new OrderView(buyOrders, sellOrders, productManager, customerManager, supplierManager);
         MainView mainView = new MainView(orderView, inventoryView, reportView, supplierView, customerView , languageView);
+
+        authView.show();
 
         mainView.show();
     }

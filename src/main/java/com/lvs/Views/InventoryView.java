@@ -7,7 +7,7 @@ import com.lvs.Printer;
 import com.lvs.Classes.Product;
 import com.lvs.Language.LanguageControl;
 
-public class InventoryView implements View {
+public class InventoryView implements IView {
     ProductManager productManager;
     Scanner scanner;
 

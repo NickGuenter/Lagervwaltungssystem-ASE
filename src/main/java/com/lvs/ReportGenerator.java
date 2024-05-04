@@ -2,6 +2,7 @@ package com.lvs;
 
 import java.time.LocalDateTime;
 
+import com.lvs.Language.LanguageControl;
 import com.lvs.Manager.OrderManager;
 import com.lvs.Manager.ProductManager;
 
@@ -18,7 +19,7 @@ public class ReportGenerator {
 
     public void printOverallReport() {
         System.out.println("\n====================");
-        System.out.println("   REPORT " + getDate());
+        System.out.println("   " + LanguageControl.getTranslation("report").toUpperCase() + " " + getDate());
         System.out.println("====================");
         System.out.println();
         Printer.printInventory(productManager);
@@ -27,7 +28,7 @@ public class ReportGenerator {
 
     public void printProductReport(String productName) {
         System.out.println("\n====================");
-        System.out.println("   REPORT: " + productName + " " + getDate());
+        System.out.println("   " + LanguageControl.getTranslation("report").toUpperCase() + " " + productName + " " + getDate());
         System.out.println("====================");
         System.out.println();
         
@@ -38,18 +39,19 @@ public class ReportGenerator {
 
     public void printRevenueReport() {
         System.out.println("\n====================");
-        System.out.println("   UMSATZREPORT " + getDate());
+        System.out.println("   " + LanguageControl.getTranslation("revenueReport").toUpperCase() + " " + getDate());
         System.out.println("====================");
         System.out.println();
-        System.out.println("   EINKAUF:");
+        System.out.println("   " + LanguageControl.getTranslation("buy").toUpperCase() + ":");
         buyOrders.getOrders().forEach(order -> {
             System.out.println("+" + order.calculateOrderValue());
         });
-        System.out.println("   VERKAUF:");
+        System.out.println("   " + LanguageControl.getTranslation("sell").toUpperCase() + ":");
         sellOrders.getOrders().forEach(order -> {
             System.out.println("-" + order.calculateOrderValue());
         });
-        System.out.println("Gesamtumsatz: " + (sellOrders.getTotalValue()-buyOrders.getTotalValue()) + "$");
+        System.out.println();
+        System.out.println(LanguageControl.getTranslation("totalRevenue") + ": " + (sellOrders.getTotalValue()-buyOrders.getTotalValue()) + "$");
         System.out.println();
     }
 

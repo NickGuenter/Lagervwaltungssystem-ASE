@@ -1,6 +1,6 @@
 package com.lvs.Views;
 
-public interface View {
+public interface IView {
 
     void show();
 
