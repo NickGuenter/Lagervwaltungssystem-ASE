@@ -60,7 +60,7 @@ public class Order {
         System.out.println("Products: ");
         for (Product product : products) {
             System.out.println();
-            System.out.println("Product ID: " + product.getProductId());
+            // System.out.println("Product ID: " + product.getProductId());
             System.out.println("Product Name: " + product.getProductName());
             System.out.println("Product Value: " + product.getProductValue());
             System.out.println("Product Quantity: " + product.getProductQuantity());

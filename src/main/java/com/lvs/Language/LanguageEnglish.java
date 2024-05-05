@@ -94,6 +94,7 @@ public class LanguageEnglish {
         english.put("newProductQuantity", "Enter new product quantity:");
 
         // Authentication
+        english.put("authentication", "Authentication");
         english.put("login", "Login");
         english.put("register", "Register");
         english.put("username", "Username");

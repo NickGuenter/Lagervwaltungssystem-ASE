@@ -9,7 +9,7 @@ public class WarehouseManagementSystem {
 
     public static void main(String[] args) {
         LanguageControl.setLanguageEnglish(LanguageEnglish.getLanguage());
-        AuthView authView = new AuthView(new Authentication());
+        AuthView authView = new AuthView(new Authenticfiation());
         ProductManager productManager = new ProductManager();
         OrderManager buyOrders = new OrderManager();
         OrderManager sellOrders = new OrderManager();

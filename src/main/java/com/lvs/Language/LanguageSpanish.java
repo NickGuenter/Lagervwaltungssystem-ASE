@@ -93,6 +93,7 @@ public class LanguageSpanish {
         spanish.put("newProductQuantity", "Ingrese la nueva cantidad del producto:");
 
         // Authentication
+        spanish.put("authentication", "Autenticación");
         spanish.put("login", "Iniciar sesión");
         spanish.put("register", "Registrarse");
         spanish.put("username", "Nombre de usuario");

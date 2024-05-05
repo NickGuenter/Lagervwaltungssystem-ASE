@@ -32,7 +32,6 @@ public class CustomerManagerTest {
 
     @Test
     public void testAddCustomer() {
-        CustomerManager cm = new CustomerManager();
         cm.addCustomer("Filial", "F02", new Address("Hamburg"), Optional.of("Jane Doe"));
         FilialCustomer fc = (FilialCustomer) cm.findCustomer("F02");
         assertEquals("F02", fc.getName());
@@ -42,7 +41,6 @@ public class CustomerManagerTest {
 
     @Test
     public void testRemoveCustomer() {
-        CustomerManager cm = new CustomerManager();
         cm.removeCustomer("William Doe");
         assertNull(cm.findCustomer("William Doe"));
     }

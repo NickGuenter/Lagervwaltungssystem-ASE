@@ -94,6 +94,7 @@ public class LanguageGerman {
         german.put("newProductQuantity", "Neue Produktmenge eingeben:");
 
         // Authentication
+        german.put("authentication", "Authentifizierung");
         german.put("login", "Anmelden");
         german.put("register", "Registrieren");
         german.put("username", "Benutzername");

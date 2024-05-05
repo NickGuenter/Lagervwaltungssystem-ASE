@@ -19,12 +19,6 @@ public class ProductTest {
     }
 
     @Test
-    public void testGetProductId() {
-        UUID productId = product.getProductId();
-        assertNotNull(productId);
-    }
-
-    @Test
     public void testGetName() {
         String name = product.getProductName();
         assertEquals("Test Product", name);

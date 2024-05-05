@@ -12,15 +12,15 @@ import java.util.Scanner;
 import com.lvs.Classes.User;
 import com.lvs.Language.LanguageControl;
 
-public class Authentication {
+public class Authenticfiation {
     private Map<String, User> users;
 
-    public Authentication() {
+    public Authenticfiation() {
         users = new HashMap<>();
     }
 
-    public void registerUser(String username, String password) {
-        users.put(username, new User(username, password));
+    public User getUser(String username) {
+        return users.get(username);
     }
 
     private String hashPassword(String password) {
@@ -35,6 +35,30 @@ public class Authentication {
             return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public boolean register(String username, String password) {
+        if (users.containsKey(username)) {
+            return false;
+        }
+
+        if (!isValidPassword(password)) {
+            return false;
+        }
+
+        User user = new User(username, hashPassword(password));
+        users.put(username, user);
+        return true;
+    }
+    
+    public boolean login(String username, String password) {
+        User user = users.get(username);
+
+        if (user != null && user.checkPassword(hashPassword(password))) {
+            return true;
+        } else {
+            return false;
         }
     }
 
