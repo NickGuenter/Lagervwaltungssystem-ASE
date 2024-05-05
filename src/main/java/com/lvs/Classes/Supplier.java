@@ -29,7 +29,7 @@ public class Supplier extends Party{
 
     public void print() {
         System.out.println(LanguageControl.getTranslation("supplier") + ": " + name);
-        System.out.println(LanguageControl.getTranslation("address") + ": " + getAddress());
+        System.out.println(LanguageControl.getTranslation("customerAddress") + ": " + getAddress());
         System.out.println(LanguageControl.getTranslation("contactPerson") + ": " + contactPerson);
     }
 

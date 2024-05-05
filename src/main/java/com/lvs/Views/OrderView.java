@@ -9,6 +9,7 @@ import com.lvs.Classes.Order;
 import com.lvs.Classes.Party;
 import com.lvs.Classes.PrivateCustomer;
 import com.lvs.Classes.Product;
+import com.lvs.Classes.Report;
 import com.lvs.Classes.Supplier;
 import com.lvs.Language.LanguageControl;
 import com.lvs.Manager.CustomerManager;
@@ -49,7 +50,8 @@ public class OrderView implements IView {
             if (eingabe.equals("1")) {
                 createOrder();
             } else if (eingabe.equals("2")) {
-                Printer.printOrders(buyOrders, sellOrders);
+                Report report = new Report.Builder().reportName("Orders").buyOrders(buyOrders).sellOrders(sellOrders).build();
+                report.printReport();
             } else if (eingabe.equals("3")) {
                 findOrder();
             } else if (eingabe.equals("4")) {
@@ -64,7 +66,8 @@ public class OrderView implements IView {
         System.out.println(LanguageControl.getTranslation("findOrderText"));
         System.out.println("1: " + LanguageControl.getTranslation("customer") + "/" + LanguageControl.getTranslation("supplier"));
         System.out.println("2: " + LanguageControl.getTranslation("product"));
-        System.out.println("3: " + LanguageControl.getTranslation("back") + "\n");
+        System.out.println("3: " + LanguageControl.getTranslation("date"));
+        System.out.println("4: " + LanguageControl.getTranslation("back") + "\n");
 
         String eingabe = scanner.nextLine();
 
@@ -76,7 +79,13 @@ public class OrderView implements IView {
                 searchForProduct();
                 break;
             case "3":
+                searchForDate();
                 break;
+            case "4":
+                searchForMinimumValue();
+                break;
+            case "5":
+                return;
             default:
                 System.out.println(LanguageControl.getTranslation("invalidInput"));
                 break;
@@ -96,6 +105,25 @@ public class OrderView implements IView {
         String productName = scanner.nextLine();
         
         Printer.printSearchProduct(buyOrders, sellOrders, productName);
+    }
+
+    public void searchForDate() {
+        System.out.println(LanguageControl.getTranslation("date"));
+        System.out.println("Day:");
+        int day = Integer.valueOf(scanner.nextLine());
+        System.out.println("Month:");
+        int month = Integer.valueOf(scanner.nextLine());
+        System.out.println("Year:");
+        int year = Integer.valueOf(scanner.nextLine());
+
+        Printer.printSearchDate(buyOrders, sellOrders, day, month, year);
+    }
+
+    public void searchForMinimumValue() {
+        System.out.println(LanguageControl.getTranslation("orders"));
+        double value = Double.valueOf(scanner.nextLine());
+
+        Printer.printSearchByMinimumValue(buyOrders, sellOrders, value);
     }
 
     private void createOrder() {

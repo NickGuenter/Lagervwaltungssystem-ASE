@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import com.lvs.Classes.Product;
 
-import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ProductTest {
 

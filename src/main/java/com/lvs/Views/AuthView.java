@@ -3,14 +3,14 @@ package com.lvs.Views;
 import java.io.Console;
 import java.util.Scanner;
 
-import com.lvs.Authenticfiation;
+import com.lvs.Authentification;
 import com.lvs.Printer;
 import com.lvs.Language.LanguageControl;
 
 public class AuthView {
-    private Authenticfiation auth;
+    private Authentification auth;
 
-    public AuthView(Authenticfiation auth) {
+    public AuthView(Authentification auth) {
         this.auth = auth;
     }
 
@@ -32,6 +32,9 @@ public class AuthView {
                     register();
                     break;
                 case "3":
+                    Printer.printInfos();
+                    break;
+                case "4":
                     System.exit(0);
                 default:
                     System.out.println(LanguageControl.getTranslation("invalidInput"));

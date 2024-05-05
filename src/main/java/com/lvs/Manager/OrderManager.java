@@ -53,4 +53,29 @@ public class OrderManager {
         return ordersByParty;
     }
 
+    public ArrayList<Order> getOrdersByDate(int day, int month, int year) {
+        ArrayList<Order> ordersByDate = new ArrayList<>();
+
+        for (Order order : orders) {
+            if (order.getDate().getDayOfMonth() == day && order.getDate().getMonthValue() == month
+                    && order.getDate().getYear() == year) {
+                ordersByDate.add(order);
+            }
+        }
+
+        return ordersByDate;
+    }
+
+    public void getOrdersByMinimumValue(double value) {
+        ArrayList<Order> ordersByValue = new ArrayList<>();
+
+        for (Order order : orders) {
+            if (order.calculateOrderValue() >= value) {
+                ordersByValue.add(order);
+            }
+        }
+
+        ordersByValue.forEach(order -> order.printOrder());
+    }
+
 }

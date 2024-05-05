@@ -1,0 +1,7 @@
+AuthentificationTest.class
+Manager\CustomerManagerTest.class
+Classes\OrderTest.class
+Classes\ProductTest.class
+Manager\SupplierManagerTest.class
+Manager\ProductManagerTest.class
+Manager\OrderManagerTest.class

@@ -9,12 +9,15 @@ public class LanguageSpanish {
     static {
         // Other
         spanish.put("invalidInput", "¡Entrada no válida!");
+        spanish.put("date", "Fecha");
 
         // Language
         spanish.put("language", "Idioma");
         spanish.put("english", "Inglés");
         spanish.put("german", "Alemán");
         spanish.put("spanish", "Español");
+        spanish.put("french", "Francés");
+        spanish.put("italian", "Italiano");
         spanish.put("chooseLanguage", "Elige idioma");
 
         // Main Menu

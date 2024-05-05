@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.lvs.Classes.Address;
-import com.lvs.Classes.Customer;
 import com.lvs.Classes.Order;
 import com.lvs.Classes.Product;
 import com.lvs.Classes.Supplier;

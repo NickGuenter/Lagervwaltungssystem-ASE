@@ -9,12 +9,15 @@ public class LanguageEnglish {
     static {
         // Other
         english.put("invalidInput", "Invalid input!");
+        english.put("date", "Date");
 
         // Language
         english.put("language", "Language");
         english.put("english", "English");
         english.put("german", "German");
         english.put("spanish", "Spanish");
+        english.put("french", "French");
+        english.put("italian", "Italian");
         english.put("chooseLanguage", "Choose language");
 
         // Main Menu
@@ -94,7 +97,7 @@ public class LanguageEnglish {
         english.put("newProductQuantity", "Enter new product quantity:");
 
         // Authentication
-        english.put("authentication", "Authentication");
+        english.put("authentication", "Authentification");
         english.put("login", "Login");
         english.put("register", "Register");
         english.put("username", "Username");

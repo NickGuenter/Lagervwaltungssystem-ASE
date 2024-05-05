@@ -15,15 +15,11 @@ import com.lvs.Manager.SupplierManager;
 import com.lvs.Views.IView;
 
 public class Printer {
-    public static void printMenuName() {
-        
-    }
-
     public static void printAnimatedLoadingBar() {
         int direction = 1;
         int position = 0;
         int length = 30;
-    
+
         for (int i = 0; i <= length * 2; i++) {
             System.out.print("\rLoading: [");
             for (int j = 0; j < length; j++) {
@@ -34,13 +30,13 @@ public class Printer {
                 }
             }
             System.out.print("] " + Math.min(100, (int) ((i / (float) (length * 2)) * 100)) + "%");
-    
+
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-    
+
             position += direction;
             if (position == length - 1 || position == 0) {
                 direction *= -1;
@@ -53,11 +49,16 @@ public class Printer {
         System.out.println("\n====================");
         System.out.println("   " + LanguageControl.getTranslation("inventory").toUpperCase());
         System.out.println("====================\n");
+
+        // Print table header
+        System.out.printf("%-20s %-10s %-10s\n", "Product Name", "Price", "Quantity");
+        System.out.println("--------------------------------------------");
+
+        // Print each product
         for (Product product : products) {
-            product.print();
-            System.out.println();
+            System.out.printf("%-20s %-10.2f %-10d\n", product.getProductName(), product.getProductValue(),
+                    product.getProductQuantity());
         }
-        System.out.println();
     }
 
     public static void printProductsByName(ProductManager productManager, String productName) {
@@ -139,7 +140,9 @@ public class Printer {
         System.out.println("====================\n");
         System.out.println("1: " + LanguageControl.getTranslation("english"));
         System.out.println("2: " + LanguageControl.getTranslation("german"));
-        System.out.println("3: " + LanguageControl.getTranslation("spanish") + "\n");
+        System.out.println("3: " + LanguageControl.getTranslation("spanish"));
+        System.out.println("4: " + LanguageControl.getTranslation("french"));
+        System.out.println("5: " + LanguageControl.getTranslation("italian") + "\n");
     }
 
     public static void printAuthMenu() {
@@ -148,7 +151,8 @@ public class Printer {
         System.out.println("====================\n");
         System.out.println("1: " + LanguageControl.getTranslation("login"));
         System.out.println("2: " + LanguageControl.getTranslation("register"));
-        System.out.println("3: " + LanguageControl.getTranslation("exit") + "\n");
+        System.out.println("3: System Info");
+        System.out.println("4: " + LanguageControl.getTranslation("exit") + "\n");
     }
 
     public static void printOrders(OrderManager buyOrders, OrderManager sellOrders) {
@@ -209,13 +213,13 @@ public class Printer {
         ArrayList<Order> ordersByParty = buyOrders.getOrdersByParty(partyName);
 
         for (Order order : ordersByParty) {
-                order.printOrder();
-                System.out.println("");
+            order.printOrder();
+            System.out.println("");
         }
         System.out.println("   " + LanguageControl.getTranslation("sellOrders").toUpperCase());
         for (Order order : ordersByParty) {
-                order.printOrder();
-                System.out.println("");
+            order.printOrder();
+            System.out.println("");
         }
         System.out.println();
     }
@@ -230,26 +234,76 @@ public class Printer {
 
         ArrayList<Order> ordersByProduct = buyOrders.getOrdersByProduct(productName);
 
-        for ( Order order : ordersByProduct ) {
+        for (Order order : ordersByProduct) {
             order.printOrder();
             System.out.println("");
         }
         System.out.println("   " + LanguageControl.getTranslation("sellOrders").toUpperCase());
-        for ( Order order : ordersByProduct ) {
+        for (Order order : ordersByProduct) {
             order.printOrder();
             System.out.println("");
         }
         System.out.println();
-        }
+    }
 
-        public static void printSuppliers(SupplierManager supplierManager) {
-            System.out.println("\n====================");
-            System.out.println("   " + LanguageControl.getTranslation("suppliers").toUpperCase());
-            System.out.println("====================\n");
-            for (Supplier supplier : supplierManager.getSuppliers()) {
-                supplier.print();
-                System.out.println();
-            }
+    public static void printSuppliers(SupplierManager supplierManager) {
+        System.out.println("\n====================");
+        System.out.println("   " + LanguageControl.getTranslation("suppliers").toUpperCase());
+        System.out.println("====================\n");
+        for (Supplier supplier : supplierManager.getSuppliers()) {
+            supplier.print();
+            System.out.println();
         }
+    }
 
+    public static void printInfos() {
+        // print all the information about the program
+        System.out.println("\n====================");
+        System.out.println("   LVS: Logistic and Vendor System");
+        System.out.println("====================");
+        System.out.println("Author: Nick Günter");
+        System.out.println("Version: 1.0\n");
+        System.out.println("This program is a logistic and vendor system that allows you to manage your inventory, customers, suppliers and orders.");    }
+
+    public static void printSearchDate(OrderManager buyOrders, OrderManager sellOrders, int day, int month, int year) {
+        System.out.println("\n====================");
+        System.out.println("   " + LanguageControl.getTranslation("date").toUpperCase());
+        System.out.println("====================\n");
+
+        System.out.println("   " + LanguageControl.getTranslation("buyOrders").toUpperCase());
+        System.out.println();
+
+        ArrayList<Order> ordersByDate = buyOrders.getOrdersByDate(day, month, year);
+
+        for (Order order : ordersByDate) {
+            order.printOrder();
+            System.out.println("");
+        }
+        System.out.println("   " + LanguageControl.getTranslation("sellOrders").toUpperCase());
+        System.out.println();
+
+        ordersByDate = sellOrders.getOrdersByDate(day, month, year);
+
+        for (Order order : ordersByDate) {
+            order.printOrder();
+            System.out.println("");
+        }
+        System.out.println();
+    }
+
+    public static void printSearchByMinimumValue(OrderManager buyOrders, OrderManager sellOrders, double value) {
+        System.out.println("\n====================");
+        System.out.println("   " + LanguageControl.getTranslation("orders").toUpperCase());
+        System.out.println("====================\n");
+
+        System.out.println("   " + LanguageControl.getTranslation("buyOrders").toUpperCase());
+        System.out.println();
+
+        buyOrders.getOrdersByMinimumValue(value);
+
+        System.out.println("   " + LanguageControl.getTranslation("sellOrders").toUpperCase());
+        System.out.println();
+
+        sellOrders.getOrdersByMinimumValue(value);
+    }
 }

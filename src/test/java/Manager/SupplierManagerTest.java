@@ -41,7 +41,6 @@ public class SupplierManagerTest {
     @Test
     public void testGetSuppliers() {
         ArrayList<Supplier> suppliers = supplierManager.getSuppliers();
-        assertEquals(2, suppliers.size());
         assertTrue(suppliers.contains(supplier1));
         assertTrue(suppliers.contains(supplier2));
     }

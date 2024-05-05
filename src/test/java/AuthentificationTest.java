@@ -5,13 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import com.lvs.Authenticfiation;
+import com.lvs.Authentification;
 import com.lvs.Classes.User;
 
 public class AuthentificationTest {
     @Test
     public void testRegisterTrue() {
-        Authenticfiation auth = new Authenticfiation();
+        Authentification auth = new Authentification();
         auth.register("Test", "Test1234");
 
         User user = auth.getUser("Test");
@@ -20,7 +20,7 @@ public class AuthentificationTest {
 
     @Test
     public void testRegisterFalse() {
-        Authenticfiation auth = new Authenticfiation();
+        Authentification auth = new Authentification();
         auth.register("Test", "test123");
 
         User user = auth.getUser("Test");
@@ -29,7 +29,7 @@ public class AuthentificationTest {
 
     @Test
     public void testLoginTrue() {
-        Authenticfiation auth = new Authenticfiation();
+        Authentification auth = new Authentification();
         auth.register("Test", "Test1234");
 
         boolean login = auth.login("Test", "Test1234");
@@ -38,7 +38,7 @@ public class AuthentificationTest {
 
     @Test
     public void testLoginFalse() {
-        Authenticfiation auth = new Authenticfiation();
+        Authentification auth = new Authentification();
         auth.register("Test", "test123");
         auth.register("Test2", "Test1234");
 

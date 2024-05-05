@@ -8,8 +8,9 @@ import com.lvs.Views.*;
 public class WarehouseManagementSystem {
 
     public static void main(String[] args) {
+        LanguageControl languageControl = LanguageControl.getInstance();
         LanguageControl.setLanguageEnglish(LanguageEnglish.getLanguage());
-        AuthView authView = new AuthView(new Authenticfiation());
+        AuthView authView = new AuthView(new Authentification());
         ProductManager productManager = new ProductManager();
         OrderManager buyOrders = new OrderManager();
         OrderManager sellOrders = new OrderManager();
@@ -25,7 +26,6 @@ public class WarehouseManagementSystem {
         MainView mainView = new MainView(orderView, inventoryView, reportView, supplierView, customerView , languageView);
 
         authView.show();
-
         mainView.show();
     }
 }

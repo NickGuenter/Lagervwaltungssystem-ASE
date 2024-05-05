@@ -9,12 +9,15 @@ public class LanguageGerman {
     static {
         // Other
         german.put("invalidInput", "Ungültige Eingabe!");
+        german.put("date", "Datum");
 
         // Language
         german.put("language", "Sprache");
         german.put("english", "Englisch");
         german.put("german", "Deutsch");
         german.put("spanish", "Spanisch");
+        german.put("french", "Französisch");
+        german.put("italian", "Italienisch");
         german.put("chooseLanguage", "Sprache wählen");
 
         // Main Menu

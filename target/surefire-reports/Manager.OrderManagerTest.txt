@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: Classes.ProductTest
+Test set: Manager.OrderManagerTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s - in Classes.ProductTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s - in Manager.OrderManagerTest

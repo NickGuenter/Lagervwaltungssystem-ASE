@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.lvs.Manager.ProductManager;
 import com.lvs.Printer;
 import com.lvs.Classes.Product;
+import com.lvs.Classes.Report;
 import com.lvs.Language.LanguageControl;
 
 public class InventoryView implements IView {
@@ -24,8 +25,12 @@ public class InventoryView implements IView {
 
             switch (input) {
                 case 1:
-                    // productManager.printInventory();
-                    Printer.printInventory(productManager);
+                    Report report = new Report.Builder()
+                            .reportName("Inventory Report")
+                            .productManager(productManager)
+                            .build();
+                    report.printReport();
+                    calculateInventoryValue();
                     break;
                 case 2:
                     addProduct();
@@ -120,6 +125,14 @@ public class InventoryView implements IView {
         } catch (Exception e) {
             System.out.println(LanguageControl.getTranslation("invalidInput"));
         }
+    }
+
+    public double calculateInventoryValue() {
+        double result = 0;
+        for (Product product : productManager.getProducts()) {
+            result += product.getProductValue() * product.getProductQuantity();
+        }
+        return result;
     }
 
 }

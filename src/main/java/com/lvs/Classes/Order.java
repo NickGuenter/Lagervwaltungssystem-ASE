@@ -42,6 +42,10 @@ public class Order {
         return this.orderId;
     }
 
+    public LocalDateTime getDate() {
+        return this.date;
+    }
+
     public double getOrderValue() {
         return this.orderValue;
     }
